@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta title="search movie from OMDb">
+    <title>Search Movie from OMDb</title>
+    <link rel="icon" type="image/vnd.microsoft.icon" href="https://www.omdbapi.com/favicon.ico" />
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 2%;
+            background: rgb(245, 245, 245);
+            height: 90%;
+
+        }
+
+        .information {
+            background: white;
+            border-radius: 2em;
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            position: relative;
+            box-shadow: 0 15px 5px rgb(209, 209, 209); 
+        }
+        .filter {
+            background: white;
+            border-radius: 2em;
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            position: absolute;
+            background-repeat: no-repeat;
+            background-size: 50%;
+            background-position: -40% 0;
+            filter: blur(5px);
+            clip-path: polygon(0 0, 30% 0, 25% 100%, 0 100%);
+        }
+        input {
+            height: 5%;
+            width: 20%;
+            position: absolute;
+            top: 5%;
+            left: 75%;
+
+        }
+
+        .general {
+            margin: 10px 20px 10px 0;
+            color: rgb(177, 177, 177);
+            font-size: 15px;
+        }
+
+        img {
+            position: absolute;
+            top: 23%;
+            left: 23%;
+            height: 40%;
+        }
+
+        .specific {
+            position: absolute;
+            top: 10%;
+            left: 40%;
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="information">
+        <div class="filter"></div>
+        <input type="text" id="search">
+        <div class="specific">
+            <h1 class="title"></h1>
+
+            <p>
+                <span class="general">R</span>
+                <span class="year general"></span>
+                <span class="genre general"></span>
+            </p>
+            <p class="plot"></p>
+            <p>
+                <strong>Written by: </strong>
+                <span class="writer"></span>
+            </p>
+            <p>
+                <strong>Directed by: </strong>
+                <span class="director"></span>
+            </p>
+            <p>
+                <strong>Starring:</strong>
+            </p>
+            <p class="actors"></p>
+
+        </div>
+        <img src="" class="poster" alt="the poster of the movie you are searching">
+    </div>
+
+    <script>
+        var button = document.querySelector('button');
+        var input = document.querySelector('input');
+
+
+        input.onkeydown = function () {
+            if (event.keyCode == 13) {
+                searchMovie(input.value);
+            }
+        }
+
+        var searchMovie = function (name) {
+            var requestURL = 'https://www.omdbapi.com/?apikey=2fb7569a&t=' + name;
+            var request = new XMLHttpRequest();
+
+            var title = document.querySelector('.title');
+            var poster = document.querySelector('.poster');
+            var year = document.querySelector('.year');
+            var writer = document.querySelector('.writer');
+            var rated = document.querySelector('.genre');
+            var plot = document.querySelector('.plot');
+            var genre = document.querySelector('.genre');
+            var director = document.querySelector('.director');
+            var actors = document.querySelector('.actors');
+            var filter = document.querySelector('.filter');
+
+            request.open('GET', requestURL);
+            request.responseType = 'text';
+
+            request.send();
+            request.onload = function () {
+                var jsonobj = JSON.parse(request.response);
+                poster.setAttribute('src', jsonobj.Poster);
+                filter.style.backgroundImage = 'url(' + jsonobj.Poster + ')';
+                title.innerHTML = jsonobj.Title;
+                poster.innerHTML = jsonobj.Poster;
+                year.innerHTML = jsonobj.Year;
+                plot.innerHTML = jsonobj.Plot;
+                writer.innerHTML = jsonobj.Writer;
+                director.innerHTML = jsonobj.Director;
+                actors.innerHTML = jsonobj.Actors;
+                genre.innerHTML = jsonobj.Genre;
+                
+            }
+        }
+        searchMovie('good');
+    </script>
+</body>
+
+</html>

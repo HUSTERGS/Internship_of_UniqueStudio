@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        
+    </style>
+</head>
+<body>
+
+    <script>
+        
+        var EventTarget = {
+            handlers: {}, // 用于存放待处理事件名称以及函数列表
+            addEvent: function(name, handler)
+            {
+                if(EventTarget.handlers[name] == undefined)
+                {
+                    EventTarget.handlers[name] = [];
+                }
+                EventTarget.handlers[name].push(handler); //将处理函数添加到对应的时间名称下
+            },
+
+            fireEvent: function(event)
+            {
+                if (EventTarget.handlers[event.name] instanceof Array)// 如果事件名称已被定义
+                {
+                    var eventHandler = EventTarget.handlers[event.name];
+                    for (var i = 0; i < eventHandler.length; i++)//在列表中依次运行对应事件名称的函数
+                        eventHandler[i](event);
+                }
+            },
+
+            removeEvent: function(name, handler)
+            {
+                var eventHandler = EventTarget.handlers[event.name];
+                if (EventTarget.handlers[event.name] instanceof Array)
+                {
+                    var i = 0, flag = false;
+                    for (i = 0; i < eventHandler.lenght; i++)//寻找指定事件名称对应的函数
+                        if (handler == eventHandler[i])
+                        {
+                            flag = true;
+                            break;
+                        }
+                    if (flag)
+                        eventHandler.splice(i, 1);//如果找到了，就从指定事件名称中删除对应函数
+                }
+            }
+        }   
+        EventTarget.addEvent("alert", function(){alert("Success!")});
+
+        EventTarget.fireEvent({name: "alert"});
+        
+
+    </script>
+</body>
+
+</html>
