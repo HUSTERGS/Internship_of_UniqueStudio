@@ -49,7 +49,10 @@
         var maxItem = 100;
         var maxItemPer = 5;
         var maxPages = 15;
-        var itemArray = new Array();
+        var itemArray = new Array(); 
+
+        //生成数据
+
         for (var i = 0; i < maxItem; i++) {
             itemArray[i] = {
                 title: "这是标题" + (i + 1),
@@ -65,7 +68,7 @@
             var pages = document.querySelector(".pages");
             var relpage = Math.floor(itemArray.length / maxItemPer);
 
-
+            //初始化页码
             if (pages.childElementCount == 0) {
                 var Prev = document.createElement("div");
                 var Next = document.createElement("div");
@@ -86,7 +89,7 @@
                     else {
                         num = document.createElement("div");
                         num.innerHTML = t + 1;
-                        num.setAttribute("class", "page");
+                        num.setAttribute("class", "page #" + (t + 1));
                         pages.appendChild(num);
                     }
                 }
@@ -96,10 +99,14 @@
 
 
             //临时添加一段话
-            var listcontent = document.createElement("h2");
-            listcontent.innerHTML = "列表内容显示";
-            pages.appendChild(listcontent);
-
+            if (!document.querySelector(".temp")) {
+                var listcontent = document.createElement("h2");
+                listcontent.innerHTML = "列表内容显示";
+                listcontent.setAttribute("class", "temp");
+                pages.appendChild(listcontent);
+            }
+            
+            //初始化内容
 
             var content = document.querySelector(".content");
             if (content.childElementCount == 0) {
@@ -116,9 +123,10 @@
 
             var allPage = document.querySelectorAll(".page");
             console.log(allPage);
+            //添加点击事件
             for (var j = 0; j < allPage.length; j++) {
                 allPage[j].addEventListener("click", function () {
-                    if (this.innerHTML == "Prev" && currentNum > 0)
+                    if (this.innerHTML == "Prev" && currentNum > 1)
                         currentNum--;
                     else if (this.innerHTML == "Next" && currentNum < relpage - 1)
                         currentNum++;
@@ -129,8 +137,9 @@
                     console.log(currentNum);
 
 
-                    //下面是页码变化
-                    if (currentNum < maxPages / 2) {
+
+                    //下面是页码变化， 还是有bug，感觉最开始的实现想法就不对，如果这一段注释掉还比较正常
+                    /*if (currentNum < maxPages / 2) {
                         for (var t = 1; t < maxPages; t++) {
                             if (t < maxPages - 2) {
                                 allPage[t].innerHTML = t;
@@ -148,19 +157,19 @@
                             } else
                                 allPage[t].innerHTML = relpage + t - maxPages + 1;
                         }
-                    }else {
-                        for (var t = 1; t < maxPages; t++){
-                            if (t < 3){
+                    } else {
+                        for (var t = 1; t < maxPages; t++) {
+                            if (t < 3) {
                                 allPage[t].innerHTML = t;
-                            }else if (t == 3 || t == maxPages - 2){
+                            } else if (t == 3 || t == maxPages - 2) {
                                 allPage[t].innerHTML = "...";
-                            }else if (t > maxPages - 2){
+                            } else if (t > maxPages - 2) {
                                 allPage[t].innerHTML = relpage + t - maxPages + 1;
-                            }else {
-                                allPage[t].innerHTML = currentNum + t -4;
+                            } else {
+                                allPage[t].innerHTML = currentNum + t - 4;
                             }
                         }
-                    }
+                    }*/
 
 
                     //color效果
@@ -201,8 +210,6 @@
 
 
 
-
-
                     //内容变化
                     for (var m = 0; m < maxItemPer; m++) {
                         content.children[m].innerHTML = "<h3>" + itemArray[currentNum * maxItemPer + m].title + "</h3>" +
@@ -213,73 +220,7 @@
             }
         }
         pagination(itemArray);
-        //下面是变化页数
-                    /*if (currentNum < maxPages - 2) {
-                        for (var t = 0; t < maxPages; t++) {
 
-                            if (t == maxPages - 2) {
-                                allPage[t].innerHTML = "...";
-                            } else if (t < maxPages - 2) {
-                                allPage[t].innerHTML = t;
-                            } else {
-                                allPage[t].innerHTML = relpage - (maxPages - t);
-                            }
-                        }
-                    }
-                    else if (currentNum > relpage - maxPages + 2) {
-                        for (var t = 0; t < maxPages; t++) {
-                            if (t == 2) {
-                                allPage[t].innerHTML = t;
-                            } else if (t < 2) {
-                                allPage[t].innerHTML = t;
-                            } else {
-                                allPage[t].innerHTML = relpage - maxPages + 2 + t;
-                            }
-                        }
-                    }
-                    else {
-                        for (var t = 0; t < maxPages; t++) {
-                            if (t == 2 || t == maxPages - 2){
-                                allPage[t].innerHTML = "...";
-                            }else if (t < 2){
-                                allPage[t].innerHTML = t;
-                            }else if (t > maxPages - 2){
-                                allPage[t].innerHTML = relpage - (maxPages - t);
-                            }else{
-                                //allPage[t].innerHTML = 
-                            }
-                        }
-                    }
-                    /*for (var t = 0; t < maxPages; t++) {
-                        if (t == maxPages - 2) {
-                            allPage[t].innerHTML = "...";
-                            allPage[maxPages-1] = relpage;
-                            allPage[maxPages-2] = relpage - 1;
-                            break;
-                        }
-                        else 
-                            allPage[t].innerHTML = t + 1;
-                    }*/
-                    /*if (currentNum < maxPages - 4) {
-                        for (var t = 1; t < allPage.length - 1; t++) {
-                            if (t == allPage.length - 4)
-                                allPage[t].innerHTML = "...";
-                            else if (t > allPage.length - 4) {
-                                allPage[allPage.length-2].innerHTML = relpage;
-                                allPage[allPage.length-3].innerHTML = relpage-1;
-                            }else {
-                                allPage[t].innerHTML = t;
-                            }
-                        }
-                    }else if(currentNum > relpage - maxPages + 2) {
-                        for (var t = 1; t < allPage.length - 1; t++) {
-                            if (t == relpage - maxPages + 4) {
-                                allPage[t].innerHTML = "...";
-                            }else if (t < 5) {
-
-                            }
-                        }
-                    }*/
     </script>
 </body>
 
