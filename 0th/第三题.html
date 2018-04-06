@@ -94,9 +94,13 @@
                 pages.childNodes[2].classList.add("selected");
             }
 
+
+            //临时添加一段话
             var listcontent = document.createElement("h2");
             listcontent.innerHTML = "列表内容显示";
             pages.appendChild(listcontent);
+
+
             var content = document.querySelector(".content");
             if (content.childElementCount == 0) {
                 for (var m = 0; m < maxItemPer; m++) {
@@ -124,21 +128,57 @@
 
                     console.log(currentNum);
 
+
+                    //下面是页码变化
+                    if (currentNum < maxPages / 2) {
+                        for (var t = 1; t < maxPages; t++) {
+                            if (t < maxPages - 2) {
+                                allPage[t].innerHTML = t;
+                            } else if (t == maxPages - 2) {
+                                allPage[t].innerHTML = "...";
+                            } else
+                                allPage[t].innerHTML = relpage + t - maxPages + 1;
+                        }
+                    } else if (currentNum > relpage - (maxPages / 2)) {
+                        for (var t = 1; t < maxPages; t++) {
+                            if (t < 3) {
+                                allPage[t].innerHTML = t;
+                            } else if (t == 3) {
+                                allPage[t].innerHTML = "...";
+                            } else
+                                allPage[t].innerHTML = relpage + t - maxPages + 1;
+                        }
+                    }else {
+                        for (var t = 1; t < maxPages; t++){
+                            if (t < 3){
+                                allPage[t].innerHTML = t;
+                            }else if (t == 3 || t == maxPages - 2){
+                                allPage[t].innerHTML = "...";
+                            }else if (t > maxPages - 2){
+                                allPage[t].innerHTML = relpage + t - maxPages + 1;
+                            }else {
+                                allPage[t].innerHTML = currentNum + t -4;
+                            }
+                        }
+                    }
+
+
                     //color效果
                     if (this.innerHTML !== "..." && this.innerHTML !== "Prev" && this.innerHTML !== "Next") {
                         $("*").removeClass("selected");
                         this.classList.add("selected");
                     }
-                    if (this.innerHTML == "Next" && currentNum !== relpage){
+                    if (this.innerHTML == "Next" && currentNum !== relpage) {
                         var target = document.querySelector(".selected");
                         $("*").removeClass("selected");
                         target.nextElementSibling.classList.add("selected");
                     }
-                    if (this.innerHTML == "Prev" && currentNum !== -1){
+                    if (this.innerHTML == "Prev" && currentNum !== -1) {
                         var target = document.querySelector(".selected");
                         $("*").removeClass("selected");
                         target.previousElementSibling.classList.add("selected");
                     }
+
                     //hover效果
                     var p = document.querySelector(".prev");
                     var n = document.querySelector(".next");
@@ -159,7 +199,21 @@
                         n.style.cursor = "pointer";
                     }
 
-                    //下面是变化页数
+
+
+
+
+                    //内容变化
+                    for (var m = 0; m < maxItemPer; m++) {
+                        content.children[m].innerHTML = "<h3>" + itemArray[currentNum * maxItemPer + m].title + "</h3>" +
+                            "<p>" + itemArray[currentNum * maxItemPer + m].content1 + "</p>" +
+                            "<p>" + itemArray[currentNum * maxItemPer + m].content2 + "</p>";
+                    }
+                })
+            }
+        }
+        pagination(itemArray);
+        //下面是变化页数
                     /*if (currentNum < maxPages - 2) {
                         for (var t = 0; t < maxPages; t++) {
 
@@ -226,19 +280,6 @@
                             }
                         }
                     }*/
-
-
-
-                    //下面是变化内容
-                    for (var m = 0; m < maxItemPer; m++) {
-                        content.children[m].innerHTML = "<h3>" + itemArray[currentNum * maxItemPer + m].title + "</h3>" +
-                            "<p>" + itemArray[currentNum * maxItemPer + m].content1 + "</p>" +
-                            "<p>" + itemArray[currentNum * maxItemPer + m].content2 + "</p>";
-                    }
-                })
-            }
-        }
-        pagination(itemArray);
     </script>
 </body>
 
