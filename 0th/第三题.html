@@ -46,8 +46,8 @@
     </div>
 
     <script>
-        var maxItem = 100;
-        var maxItemPer = 5;
+        var maxItem = prompt("总数");
+        var maxItemPer = prompt("每页显示数目");
         var maxPages = 15;
         var itemArray = new Array(); 
 
@@ -171,13 +171,15 @@
                         }
                     }*/
 
-
+                    console.log(relpage);
+                    
                     //color效果
                     if (this.innerHTML !== "..." && this.innerHTML !== "Prev" && this.innerHTML !== "Next") {
                         $("*").removeClass("selected");
                         this.classList.add("selected");
                     }
-                    if (this.innerHTML == "Next" && currentNum !== relpage) {
+                    if ((this.innerHTML === "Next") && (currentNum !== (relpage-1))) {
+                        console.log("这时应该是点到Next但是没有点到最后一个")
                         var target = document.querySelector(".selected");
                         $("*").removeClass("selected");
                         target.nextElementSibling.classList.add("selected");
@@ -187,6 +189,7 @@
                         $("*").removeClass("selected");
                         target.previousElementSibling.classList.add("selected");
                     }
+                    
 
                     //hover效果
                     var p = document.querySelector(".prev");
