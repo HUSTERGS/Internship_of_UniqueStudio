@@ -11,7 +11,7 @@ body {
 
 .small-logo {
     padding: 10px;
-    width: 80px;
+    width: 100px;
     height: 40px;
 }
 
@@ -35,6 +35,7 @@ body {
     background-size: contain;
 }
 .firstpage {
+    display: block;
     width: 100%;
     height: 100vh;
     overflow: hidden;
@@ -105,4 +106,219 @@ body {
     100% {transform: translate(0,0%) scale(1.05); transform-origin: 50% 50%;}
 }
 
+.secondpage {
+    height: 100vh;
+    background-image: url(../img/02-gallery/bg.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+    display: block;
+}
 
+.headimg {
+    height: 80px;
+    background: url(../img/02-gallery/headline-01.png);
+    margin-bottom: 16px;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center top;
+    
+}
+
+.headtext {
+    background: url(../img/02-gallery/headline-02.png);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    width: 100%;
+    height: 24px;
+}
+
+.headcontainer {
+    position: absolute;
+    top: 50vh;
+    height: 68px;
+    width: 100%;
+}
+
+.thirdpage {
+    display: block;
+    position: relative;
+    height: 120vh;
+    width: 100%;
+    background: black;
+}
+
+.thirdpage .innerblock {
+    float: left;
+    position: relative;
+    height: 50%;
+    width: 100%;
+}
+
+.thirdpage .pic-1 {
+    margin: 2%;
+    position: absolute;
+    display: inline-block;
+    height: 100%;
+    width: 60%;
+    background: url(../img/02-gallery/img-01.jpg) center top no-repeat;
+    background-size: contain;
+}
+
+.thirdpage .pic-2 {
+    display: inline-block;
+    position: absolute;
+    top: 35%;
+    left: 65%;
+    width: 25%;
+    height: 50%;
+    background: url(../img/02-gallery/subheadline-pc_sp.png) center top no-repeat;
+    background-size: contain;
+}
+
+.thirdpage .pic-3 {
+    position: absolute;
+    display: inline-block;
+    height: 30%;
+    width: 5%;
+    right: 3%;
+    bottom: 0;
+    background: url(../img/02-gallery/bt-detail.png) center top no-repeat;
+    background-size: contain;
+    opacity: 1;
+    transition: linear 0.1s;
+    cursor: pointer;
+}
+
+.thirdpage .pic-3:hover {
+    opacity: 0.5;
+}
+
+.thirdpage .pic-4 {
+    position: absolute;
+    display: inline-block;
+    left: 2%;
+    height: 90%;
+    width: 24%;
+    top: 10%;
+    background: url(../img/02-gallery/img-02.jpg) center top no-repeat;
+    background-size: contain;
+}
+
+.thirdpage .pic-5 {
+    position: absolute;
+    left: 27%;
+    top: 10%;
+    display: inline-block;
+    height: 90%;
+    width: 24%;
+    background: url(../img/02-gallery/img-03.jpg) center top no-repeat;
+    background-size: contain;
+}
+
+.thirdpage .pic-6 {
+    position: absolute;
+    right: 1%;
+    top: 10%;
+    display: inline-block;
+    height: 90%;
+    width: 47%;
+    background: url(../img/02-gallery/img-04.jpg) center top no-repeat;
+    background-size: contain;
+}
+
+.forthpage {
+    display: block;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: url(../img/03-portable/bg.jpg) center top no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.midtext {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    height: 25%;
+    background: url(../img/03-portable/headline-tab_sp.png) center top no-repeat;
+}
+
+.fifthpage {
+    display: block;
+    position: relative;
+    height: 120vh;
+    width: 100%;
+    background: black;
+}
+
+.fifthpage .first {
+    float: left;
+    position: relative;
+    height: 60%;
+    width: 100%;
+}
+
+.fifthpage .second {
+    float: left;
+    position: relative;
+    height: 40%;
+    width: 100%;
+}
+
+.fifthpage .pic-1 {
+    display: inline-block;
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    width: 60%;
+    height: 100%;
+    background: url(../img/03-portable/img-01.jpg) center top no-repeat;
+    background-size: cover;
+}
+
+.fifthpage .pic-2 {
+    display: inline-block;
+    position: absolute;
+    top: 5%;
+    left: 66%;
+    width: 30%;
+    height: 100%;
+    background: url(../img/03-portable/text-pclarge_sp.png) center top no-repeat;
+    background-size: contain;
+}
+
+.fifthpage .pic-4 {
+    position: absolute;
+    display: inline-block;
+    left: 2%;
+    height: 90%;
+    width: 31%;
+    top: 10%;
+    background: url(../img/03-portable/img-02.jpg) center top no-repeat;
+    background-size: contain;
+}
+
+.fifthpage .pic-5 {
+    position: absolute;
+    left: 34.5%;
+    top: 10%;
+    display: inline-block;
+    height: 90%;
+    width: 31%;
+    background: url(../img/03-portable/img-03.jpg) center top no-repeat;
+    background-size: contain;
+}
+
+.fifthpage .pic-6 {
+    position: absolute;
+    right: 2%;
+    top: 10%;
+    display: inline-block;
+    height: 90%;
+    width: 31%;
+    background: url(../img/03-portable/img-04.jpg) center top no-repeat;
+    background-size: contain;
+}
