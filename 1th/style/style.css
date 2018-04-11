@@ -322,3 +322,291 @@ body {
     background: url(../img/03-portable/img-04.jpg) center top no-repeat;
     background-size: contain;
 }
+
+.big-img {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.playstyles {
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    top: 20%;
+}
+.part-1 {
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    background: url(../img/04-playstyle/headline-01.png) center no-repeat;
+    background-size: contain;
+}
+
+.part-2 {
+    width: 100%;
+    height: 20%;
+    top: 80%;
+    position: absolute;
+    background: url(../img/04-playstyle/headline-02.png) center no-repeat;
+    background-size: contain;
+}
+.part1 {
+    position: absolute;
+    top: -40%;
+    height: 100%;
+    width: 100%;
+    background: url(../img/04-playstyle/bg-headline-left.png) no-repeat center;
+    background-size: cover;
+
+}
+
+.part2 {
+    position: absolute;
+    top: -40%;
+    height: 100%;
+    width: 100%;
+    background: url(../img/04-playstyle/bg-headline-center.png) no-repeat center;
+    background-size: cover;
+}
+
+.part3 {
+    position: absolute;
+    top: -40%;
+    height: 100%;
+    width: 100%;
+    background: url(../img/04-playstyle/bg-headline-right.png) no-repeat center;
+    background-size: cover;
+}
+
+.sixthpage {
+    position: relative;
+    top: -35vh;
+    height: 100vh;
+    width: 100%;
+    background: white;
+}
+
+.mode {
+    display: block;
+    position: absolute;
+    width: 30%;
+    height: 100%;
+}
+
+.TV {
+    left: 4%;
+}
+
+.Tabletop {
+    left: 35%;
+}
+
+.Handheld {
+    right: 4%;
+}
+
+
+
+.TV .imgs {
+    width: 100%;
+    display: block;
+    position: absolute;
+    height: 55%;
+    background:
+        url(../img/04-02-mode/tv01.jpg) no-repeat center,
+        url(../img/04-02-mode/tv02.jpg) no-repeat center,
+        url(../img/04-02-mode/tv03.jpg) no-repeat center;
+    background-size: cover;
+    /*clip-path: 
+            polygon(0 0, 0 0, 0 0, 0 0),
+            polygon(0 0, 0 0, 0 0, 0 0),
+            polygon(0 0, 100% 0, 100% 100%, 0 100%);*/
+    /*animation: changebackground 12s linear infinite;*/
+}
+
+/*@keyframes changebackground {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    50% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}*/
+/*@keyframes changebackground {
+    0% {
+        clip-path: 
+            polygon(0 0, 0 0, 0 0, 0 0),
+            polygon(0 0, 0 0, 0 0, 0 0),
+            polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    16% {
+        clip-path: 
+            polygon(0 0, 0 0, 0 0, 0 0),
+            polygon(0 0, 0 0, 0 0, 0 0),
+            polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    32% {
+        clip-path: 
+            polygon(0 0, 100% 0, 100% 100%, 0 100%),
+            polygon(0 0, 0 0, 0 0, 0 0),
+            polygon(0 0, 0 0, 0 0, 0 0);
+    }
+    48% {
+        clip-path: 
+            polygon(0 0, 100% 0, 100% 100%, 0 100%),
+            polygon(0 0, 0 0, 0 0, 0 0),
+            polygon(0 0, 0 0, 0 0, 0 0);
+    }
+    64% {
+        clip-path: 
+            polygon(0 0, 0 0, 0 0, 0 0),
+            polygon(0 0, 100% 0, 100% 100%, 0 100%),
+            polygon(0 0, 0 0, 0 0, 0 0);
+    }
+    80% {
+        clip-path: 
+            polygon(0 0, 0 0, 0 0, 0 0),
+            polygon(0 0, 100% 0, 100% 100%, 0 100%),
+            polygon(0 0, 0 0, 0 0, 0 0);
+    }
+    100% {
+        clip-path: 
+            polygon(0 0, 0 0, 0 0, 0 0),
+            polygon(0 0, 0 0, 0 0, 0 0),
+            polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}*/
+
+.Tabletop .imgs {
+    width: 100%;
+    display: block;
+    position: absolute;
+    height: 55%;
+    background: 
+        url(../img/04-02-mode/table01.jpg) no-repeat center,
+        url(../img/04-02-mode/table02.jpg) no-repeat center,
+        url(../img/04-02-mode/table03.jpg) no-repeat center;
+    background-size: cover;
+}
+
+.Handheld .imgs {
+    width: 100%;
+    display: block;
+    position: absolute;
+    height: 55%;
+    background: 
+        url(../img/04-02-mode/hh01.jpg) no-repeat center,
+        url(../img/04-02-mode/hh02.jpg) no-repeat center,
+        url(../img/04-02-mode/hh03.jpg) no-repeat center;
+    background-size: cover;
+}
+
+.subtitle {
+    left: 10%;
+    width: 80%;
+    display: block;
+    height: 12%;
+    position: absolute;
+    top: 48%;
+    background: black;
+    z-index: 1;
+}
+
+.TV .part_1 {
+    position: absolute;
+    background: url(../img/04-02-mode/h-01-jp.png) no-repeat center;
+    top: 27%;
+    height: 33%;
+    background-size: contain;
+    width: 100%;
+}
+
+.TV .part_2 {
+    position: absolute;
+    background: url(../img/04-02-mode/h-01-en.png) white no-repeat center;
+    height: 20%;
+    top: 75%;
+    left: 2%;
+    background-size: contain; 
+    width: 96%;
+}
+
+.Tabletop .part_1 {
+    position: absolute;
+    background: url(../img/04-02-mode/h-02-jp.png) no-repeat center;
+    top: 27%;
+    height: 33%;
+    background-size: contain;
+    width: 100%;
+}
+
+.Tabletop .part_2 {
+    position: absolute;
+    background: url(../img/04-02-mode/h-02-en.png) white no-repeat center;
+    height: 20%;
+    top: 75%;
+    left: 2%;
+    background-size: contain; 
+    width: 96%;
+}
+
+.Handheld .part_1 {
+    position: absolute;
+    background: url(../img/04-02-mode/h-03-jp.png) no-repeat center;
+    top: 27%;
+    height: 33%;
+    background-size: contain;
+    width: 100%;
+}
+
+.Handheld .part_2 {
+    position: absolute;
+    background: url(../img/04-02-mode/h-03-en.png) white no-repeat center;
+    height: 20%;
+    top: 75%;
+    left: 2%;
+    background-size: contain; 
+    width: 96%;
+}
+
+.title {
+    height: 20%;
+    left: 10%;
+    width: 80%;
+    top: 60%;
+    position: absolute;
+    display: block;
+}
+
+.TV .title {
+    background: url(../img/04-02-mode/lead-01.png) no-repeat center;
+    background-size: contain;
+}
+
+.Tabletop .title {
+    background: url(../img/04-02-mode/lead-02.png) no-repeat center;
+    background-size: contain;
+}
+
+.Handheld .title {
+    background: url(../img/04-02-mode/lead-03.png) no-repeat center;
+    background-size: contain;
+}
+
+.des {
+    width: 80%;
+    display: block;
+    position: absolute;
+    height: 20%;
+    top: 80%;
+    left: 10%;
+    line-height: 200%;
+}
+
+
