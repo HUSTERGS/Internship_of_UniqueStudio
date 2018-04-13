@@ -408,103 +408,119 @@ body {
     right: 4%;
 }
 
-
-
-.TV .imgs {
+.TV .imgs, .Tabletop .imgs, .Handheld .imgs {
     width: 100%;
     display: block;
     position: absolute;
-    height: 55%;
-    background:
-        url(../img/04-02-mode/tv01.jpg) no-repeat center,
-        url(../img/04-02-mode/tv02.jpg) no-repeat center,
-        url(../img/04-02-mode/tv03.jpg) no-repeat center;
-    background-size: cover;
-    /*clip-path: 
-            polygon(0 0, 0 0, 0 0, 0 0),
-            polygon(0 0, 0 0, 0 0, 0 0),
-            polygon(0 0, 100% 0, 100% 100%, 0 100%);*/
-    /*animation: changebackground 12s linear infinite;*/
+    height: 62%;
 }
 
-/*@keyframes changebackground {
-    0% {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-    50% {
-        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-    }
-    100% {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-}*/
-/*@keyframes changebackground {
-    0% {
-        clip-path: 
-            polygon(0 0, 0 0, 0 0, 0 0),
-            polygon(0 0, 0 0, 0 0, 0 0),
-            polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-    16% {
-        clip-path: 
-            polygon(0 0, 0 0, 0 0, 0 0),
-            polygon(0 0, 0 0, 0 0, 0 0),
-            polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-    32% {
-        clip-path: 
-            polygon(0 0, 100% 0, 100% 100%, 0 100%),
-            polygon(0 0, 0 0, 0 0, 0 0),
-            polygon(0 0, 0 0, 0 0, 0 0);
-    }
-    48% {
-        clip-path: 
-            polygon(0 0, 100% 0, 100% 100%, 0 100%),
-            polygon(0 0, 0 0, 0 0, 0 0),
-            polygon(0 0, 0 0, 0 0, 0 0);
-    }
-    64% {
-        clip-path: 
-            polygon(0 0, 0 0, 0 0, 0 0),
-            polygon(0 0, 100% 0, 100% 100%, 0 100%),
-            polygon(0 0, 0 0, 0 0, 0 0);
-    }
-    80% {
-        clip-path: 
-            polygon(0 0, 0 0, 0 0, 0 0),
-            polygon(0 0, 100% 0, 100% 100%, 0 100%),
-            polygon(0 0, 0 0, 0 0, 0 0);
-    }
-    100% {
-        clip-path: 
-            polygon(0 0, 0 0, 0 0, 0 0),
-            polygon(0 0, 0 0, 0 0, 0 0),
-            polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-}*/
 
-.Tabletop .imgs {
-    width: 100%;
-    display: block;
+.TV .img-1 {
     position: absolute;
-    height: 55%;
-    background: 
-        url(../img/04-02-mode/table01.jpg) no-repeat center,
-        url(../img/04-02-mode/table02.jpg) no-repeat center,
-        url(../img/04-02-mode/table03.jpg) no-repeat center;
+    width: 100%;
+    height: 100%;
+    background: url(../img/04-02-mode/tv01.jpg) no-repeat left;
     background-size: cover;
+    animation: change1 6s linear infinite backwards;
 }
 
-.Handheld .imgs {
-    width: 100%;
-    display: block;
+.TV .img-2 {
     position: absolute;
-    height: 55%;
-    background: 
-        url(../img/04-02-mode/hh01.jpg) no-repeat center,
-        url(../img/04-02-mode/hh02.jpg) no-repeat center,
-        url(../img/04-02-mode/hh03.jpg) no-repeat center;
+    width: 100%;
+    height: 100%;
+    background: url(../img/04-02-mode/tv02.jpg) no-repeat left;
     background-size: cover;
+    animation: change2 6s linear infinite backwards;
+}
+
+.TV .img-3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/04-02-mode/tv03.jpg) no-repeat left;
+    background-size: cover;
+    animation: change3 6s linear infinite backwards;
+}
+
+.Tabletop .img-1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/04-02-mode/table01.jpg) no-repeat left;
+    background-size: cover;
+    animation: change1 6s linear infinite backwards;
+}
+
+.Tabletop .img-2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/04-02-mode/table02.jpg) no-repeat left;
+    background-size: cover;
+    animation: change2 6s linear infinite backwards;
+}
+.Tabletop .img-3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/04-02-mode/table03.jpg) no-repeat left;
+    background-size: cover;
+    animation: change3 6s linear infinite backwards;
+}
+.Handheld .img-1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/04-02-mode/hh01.jpg) no-repeat left;
+    background-size: cover;
+    animation: change1 6s linear infinite backwards;
+}
+.Handheld .img-2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/04-02-mode/hh02.jpg) no-repeat left;
+    background-size: cover;
+    animation: change2 6s linear infinite backwards;
+}
+.Handheld .img-3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/04-02-mode/hh03.jpg) no-repeat left;
+    background-size: cover;
+    animation: change3 6s linear infinite backwards;
+}
+
+@keyframes change1 {
+    0% {width: 100%; z-index: 3;}
+    16.67% {width: 100%; z-index: 3;}
+    33.33% {width: 100%; z-index: 3;}
+    50% {width: 100%; z-index: 1;}   
+    66.67% {width: 0; z-index: 1;}
+    83.33% {width: 0; z-index: 3;}
+    100% {width: 100%; z-index: 3;}
+}
+
+@keyframes change2 {
+    0% {width: 0; z-index: 2;} 
+    16.67% {width: 0; z-index: 3;}
+    33.33% {width: 100%; z-index: 3;} 
+    50% {width: 100%; z-index: 2}; 
+    66.67% {width: 100%; z-index: 2;}
+    83.33% {width: 100%; z-index: 2;}
+    100% {width: 0; z-index: 2;}
+}
+
+@keyframes change3 {
+    0% {width: 0; z-index: 1;}
+    16.67% {width: 0; z-index: 1;}
+    33.33% {width: 0; z-index: 1;}
+    50% {width: 0; z-index: 3;}
+    66.67% {width: 100%; z-index: 3;}
+    83.33% {width: 100%; z-index: 2;}
+    100% {width: 100%; z-index: 1;}
 }
 
 .subtitle {
@@ -513,9 +529,9 @@ body {
     display: block;
     height: 12%;
     position: absolute;
-    top: 48%;
+    top: 55%;
     background: black;
-    z-index: 1;
+    z-index: 4;
 }
 
 .TV .part_1 {
@@ -579,7 +595,7 @@ body {
     height: 20%;
     left: 10%;
     width: 80%;
-    top: 60%;
+    top: 67%;
     position: absolute;
     display: block;
 }
@@ -604,9 +620,256 @@ body {
     display: block;
     position: absolute;
     height: 20%;
-    top: 80%;
+    top: 87%;
     left: 10%;
     line-height: 200%;
 }
 
+.Imgfour {
+    position: relative;
+    height: 90vh;
+    width: 67%;
+    display: inline-block;
+}
+
+.Imgfour .img1 {
+    background: url(../img/05-02-world/ph01.jpg) no-repeat top center;
+    position: absolute;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+.Imgfour .img2 {
+    background: url(../img/05-02-world/ph02.jpg) no-repeat top center;
+    position: absolute;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.Imgfour .img3 {
+    background: url(../img/05-02-world/ph03.jpg) no-repeat top center;
+    position: absolute;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+.Imgfour .img4 {
+    background: url(../img/05-02-world/ph04.jpg) no-repeat top center;
+    position: absolute;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.besider {
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 33%;
+    top: 0;
+    left: 67%;
+    background: black;
+}
+
+.besider .text1 {
+    width: 84%;
+    height: 3.5%;
+    display: block;
+    top: 8%;
+    left: 7%;
+    position: absolute;
+    background: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 2%;
+    line-height: 18px;
+}
+
+.besider .maxnum {
+    position: absolute;
+    height: 18%;
+    width: 100%;
+    display: block;
+    top: 15%;
+    left: 7%;
+    width: 84%;
+    visibility: visible;
+    background: url(../img/05-02-world/subheadline-pc_sp.png) no-repeat top left; 
+    background-size: cover;
+}
+
+.besider .text2 {
+    width: 84%;
+    height: 7%;
+    display: block;
+    top: 36%;
+    left: 7%;
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    
+    line-height: 25px;
+    color: white;
+}
+
+.besider .text3 {
+    width: 84%;
+    height: 3.5%;
+    display: block;
+    top: 52%;
+    left: 7%;
+    position: absolute;
+    background: white;
+    padding-left: 2%;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 18px;
+}
+
+.besider .text4 {
+    width: 84%;
+    height: 7%;
+    display: block;
+    top: 60%;
+    left: 7%;
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 25px;
+    color: white;
+}
+
+.besider .text5 {
+    width: 84%;
+    height: 7%;
+    display: block;
+    top: 80%;
+    left: 7%;
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 25px;
+    color: white;
+}
+
+.style {
+    position: relative;
+}
+
+.Joy-Con {
+    height: 100vh;
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+.controlers {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.controlers .controler1 {
+    left: 11%;
+    top: 11%;
+    position: absolute;
+}
+
+.controlers .controler2 {
+    top: 11%;
+    right: 11%;
+    position: absolute;
+}
+
+.Joy-Con .text1 {
+    position: absolute;
+    height: 15%;
+    width: 35%;
+    top: 35%;
+    left: 32.5%;
+    background: url(../img/05-joycon/title_text01.png) center top no-repeat;
+    background-size: contain;
+    border-bottom: 2px solid red;
+    padding-bottom: 6px;
+}
+
+.Joy-Con .text2 {
+    position: absolute;
+    height: 4%;
+    top: 55%;
+    width: 100%;
+    background: url(../img/05-joycon/title_text02.png) center top no-repeat;
+    background-size: contain;
+}
+
+.Joy-Con .text3 {
+    position: absolute;
+    top: 65%;
+    left: 33%;
+    width: 34%;
+    text-align: center;
+    line-height: 2.25;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.thecontrolers {
+    height: 100vh;
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+.leftpart {
+    position: absolute;
+    width: 45%;
+    display: block;
+    height: 100%;
+}
+
+.leftpart img {
+    position: absolute;
+    bottom: 3%;
+    left: 0;
+    width: 100%;
+}
+
+.rightpart {
+    position: absolute;
+    width: 45%;
+    display: block;
+    height: 100%;
+}
+
+.rightpart img {
+    position: absolute;
+    bottom: 3%;
+    left: 0;
+    width: 100%;
+}
+
+.bigimg {
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    height: 75%;
+    width: 65%;
+    
+}
+
+.bigimg img {
+    width: 100%;
+    height: 100%;
+}
+
+.thecontrolers .text {
+    position: absolute;
+    height: 10%;
+    width: 45%;
+    left: 52%;
+    bottom: 3%;
+    font-size: 16px;
+    line-height: 36px;
+}
 
