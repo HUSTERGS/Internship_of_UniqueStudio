@@ -1,7 +1,9 @@
  
 body {
     margin: 0;
+    position: relative;
 }
+
 .small-logo-container {
     visibility: visible;
     position: absolute;
@@ -16,30 +18,77 @@ body {
 }
 
 .big-logo-container {
+    opacity: 0;
     position: absolute;
     width: 100%;
     height: 100vh;
-    z-index: 1;
+    z-index: 3;
     background: url(../img/01-hero/logo.png) no-repeat center;
     background-size: 310px auto;
+    transition: opacity 500ms;
 }
+
 .arrow {
+    opacity: 0;
     cursor: pointer;
-    visibility: visible;
-    position: absolute;
+    position: fixed;
     top: calc(95% - 19px);
-    width: 100%;
+    left: 46%;
+    width: 8%;
     height: 19px;
-    z-index: 1;
+    z-index: 3;
     background: url(../img/01-hero/arrow.svg) no-repeat center bottom;
     background-size: contain;
+    transition: opacity 500ms;
 }
+.bigbig {
+    z-index: 3;
+    visibility: visible;
+    transition: opacity 500ms;
+}
+
+
+.jshead1 {
+    animation: changelogo1 1s linear 1 forwards ;
+}
+.jshead2 {
+    animation: changelogo2 1s linear 1 forwards ;
+}
+@keyframes changelogo1{
+    0% {opacity: 1;}
+    100%{opacity: 0;}
+}
+
+@keyframes changelogo2 {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
 .firstpage {
     display: block;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    position: relative;
+    position: absolute;
+    z-index: 2;
+}
+
+.jsselected1 {
+    animation: changefirstpage1 0.4s ease-in 1 forwards;
+}
+
+.jsselected2 {
+    animation: changefirstpage2 0.4s ease-out 1 forwards;
+}
+
+@keyframes changefirstpage1 {
+    from {top: 0;}
+    to {top: -100vh;}
+}
+
+@keyframes changefirstpage2 {
+    from {top: -100vh;}
+    to {top: 0;}
 }
 
 .layer {
@@ -97,7 +146,7 @@ body {
     61.11116% {transform: translate(0,-300%) scale(1.05); transform-origin: 50% 350%;}
 
     63.88894% {transform: translate(0,-400%) scale(1);}
-    77.77784% {transform: translate(0,-400%) scale(1.05); transform-origin: 50% 450%;} 
+    77.77784% {transform: translate(0,-400%) scale(1.05); transform-origin: 50% 460%;} 
 
     80.55562% {transform: translate(0,-500%) scale(1);}
     94.44452% {transform: translate(0,-500%) scale(1.05); transform-origin: 50% 550%;}
@@ -107,7 +156,8 @@ body {
 }
 
 .secondpage {
-    height: 100vh;
+    height: 200vh;
+    width: 100%;
     background-image: url(../img/02-gallery/bg.jpg);
     background-attachment: fixed;
     background-size: cover;
@@ -136,9 +186,25 @@ body {
 
 .headcontainer {
     position: absolute;
-    top: 50vh;
+    top: 95vh;
     height: 68px;
     width: 100%;
+    opacity: 0;
+}
+
+.jsselected3 {
+    animation: changeopacity1 0.5s ease-in  1 forwards;
+}
+.jsselected4 {
+    animation: changeopacity2 0.5s ease-in  1 forwards;
+}
+@keyframes changeopacity1 {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes changeopacity12 {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
 }
 
 .thirdpage {
@@ -239,6 +305,7 @@ body {
 }
 
 .midtext {
+    opacity: 0;
     position: absolute;
     top: 40%;
     width: 100%;
@@ -246,6 +313,22 @@ body {
     background: url(../img/03-portable/headline-tab_sp.png) center top no-repeat;
 }
 
+.jsselected6 {
+    animation: changemidtext1 1s ease-in 1 forwards;
+}
+
+.jsselected7 {
+    animation: changemidtext2 1s ease-in 1 forwards;
+}
+
+@keyframes changemidtext1 {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+@keyframes changemidtext2 {
+    0%{opacity: 1;}
+    100%{opacity: 0;}
+}
 .fifthpage {
     display: block;
     position: relative;
@@ -355,32 +438,52 @@ body {
 }
 .part1 {
     position: absolute;
-    top: -40%;
     height: 100%;
     width: 100%;
-    background: url(../img/04-playstyle/bg-headline-left.png) no-repeat center;
+    top: 9%;
+    background: url(../img/04-playstyle/bg-headline-left.png) no-repeat center bottom;
     background-size: cover;
-
 }
 
 .part2 {
     position: absolute;
-    top: -40%;
     height: 100%;
     width: 100%;
-    background: url(../img/04-playstyle/bg-headline-center.png) no-repeat center;
+    background: url(../img/04-playstyle/bg-headline-center.png) no-repeat center bottom;
     background-size: cover;
 }
 
 .part3 {
     position: absolute;
-    top: -40%;
     height: 100%;
     width: 100%;
-    background: url(../img/04-playstyle/bg-headline-right.png) no-repeat center;
+    background: url(../img/04-playstyle/bg-headline-right.png) no-repeat 0 47%;
     background-size: cover;
 }
 
+.threeparts {
+    position: relative;
+    overflow: hidden;
+    height: 60%;
+    width: 100%;
+}
+
+.jsselectedleft1 {
+    animation: leftup1 1s ease-out  1 forwards;
+}
+.jsselectedright1 {
+    animation: rightup1 1s ease-out  1 forwards ;
+}
+@keyframes leftup1{
+    0%{top: 9%;}
+    100%{
+    top: 0;
+}
+}
+@keyframes rightup1{
+    0%{background-position-y: 47%;}
+    100%{background-position-y: 100%;}
+}
 .sixthpage {
     position: relative;
     top: -35vh;
@@ -630,6 +733,7 @@ body {
     height: 90vh;
     width: 67%;
     display: inline-block;
+    background: black;
 }
 
 .Imgfour .img1 {
@@ -638,6 +742,8 @@ body {
     background-size: cover;
     width: 100%;
     height: 100%;
+    opacity: 1;
+    animation: big1 12s linear infinite backwards ;
 }
 .Imgfour .img2 {
     background: url(../img/05-02-world/ph02.jpg) no-repeat top center;
@@ -645,6 +751,8 @@ body {
     background-size: cover;
     width: 100%;
     height: 100%;
+    opacity: 0;
+    animation: big2 12s linear infinite backwards ;
 }
 
 .Imgfour .img3 {
@@ -653,6 +761,8 @@ body {
     background-size: cover;
     width: 100%;
     height: 100%;
+    opacity: 0;
+    animation: big3 12s linear infinite backwards ;
 }
 .Imgfour .img4 {
     background: url(../img/05-02-world/ph04.jpg) no-repeat top center;
@@ -660,8 +770,71 @@ body {
     background-size: cover;
     width: 100%;
     height: 100%;
+    opacity: 0;
+    animation: big4 12s linear infinite backwards ;
 }
 
+@keyframes big1 {
+    0% {opacity: 1;}
+    8.32% {opacity: 1;}
+    16.67% {opacity: 0;}
+    25% {opacity: 0;}
+    33.32% {opacity: 0;}
+    41.65% {opacity: 0;}
+    50% {opacity: 0;}
+    58.31% {opacity: 0;}
+    66.66% {opacity: 0;}
+    75% {opacity: 0;}
+    83.33% {opacity: 0;}
+    91.63% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes big2 {
+    0% {opacity: 0;}
+    8.32% {opacity: 0;}
+    16.67% {opacity: 0;}
+    25% {opacity: 1;}
+    33.32% {opacity: 1;}
+    41.65% {opacity: 0;}
+    50% {opacity: 0;}
+    58.31% {opacity: 0;}
+    66.66% {opacity: 0;}
+    75% {opacity: 0;}
+    83.33% {opacity: 0;}
+    91.63% {opacity: 0;}
+    100% {opacity: 0;}
+}
+@keyframes big3 {
+    0% {opacity: 0;}
+    8.32% {opacity: 0;}
+    16.67% {opacity: 0;}
+    25% {opacity: 0;}
+    33.32% {opacity: 0;}
+    41.65% {opacity: 0;}
+    50% {opacity: 1;}
+    58.31% {opacity: 1;}
+    66.66% {opacity: 0;}
+    75% {opacity: 0;}
+    83.33% {opacity: 0;}
+    91.63% {opacity: 0;}
+    100% {opacity: 0;}
+}
+@keyframes big4 {
+    0% {opacity: 0;}
+    8.32% {opacity: 0;}
+    16.67% {opacity: 0;}
+    25% {opacity: 0;}
+    33.32% {opacity: 0;}
+    41.65% {opacity: 0;}
+    50% {opacity: 0;}
+    58.31% {opacity: 0;}
+    66.66% {opacity: 0;}
+    75% {opacity: 1;}
+    83.33% {opacity: 1;}
+    91.63% {opacity: 0;}
+    100% {opacity: 0;}
+}
 .besider {
     display: block;
     height: 100%;
@@ -772,16 +945,31 @@ body {
 
 .controlers .controler1 {
     left: 11%;
-    top: 11%;
+    top: 2%;
     position: absolute;
+    opacity: 0;
 }
 
 .controlers .controler2 {
-    top: 11%;
+    top: 20%;
     right: 11%;
     position: absolute;
+    opacity: 0;
 }
-
+.jsselectedleft2 {
+    animation: leftup2 1.5s ease-out  1 forwards;
+}
+.jsselectedright2 {
+    animation: rightdown2 1.5s ease-out  1 forwards;
+}
+@keyframes leftup2 {
+    0% {top: 2%; opacity: 0;}
+    100%{top: 11%; opacity: 1;}
+}
+@keyframes rightdown2{
+    0% {top: 20%; opacity: 0;}
+    100%{top: 11%; opacity: 1;}
+}
 .Joy-Con .text1 {
     position: absolute;
     height: 15%;
@@ -840,8 +1028,15 @@ body {
     width: 45%;
     display: block;
     height: 100%;
+    top: 18.5%
 }
-
+.jsselectedright3 {
+    animation: rightup2 1.5s ease-out  1 forwards ;
+}
+@keyframes rightup2 {
+    0% {top: 18.5%;}
+    100%{top: 0;}
+}
 .rightpart img {
     position: absolute;
     bottom: 3%;
@@ -873,3 +1068,364 @@ body {
     line-height: 36px;
 }
 
+.biggallery {
+    width: calc(100% - 80px);
+    position: relative;
+    height: 277vh;
+    margin: 40px;
+    display: block;
+}
+
+.biggallery img {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.biggallery .img-1{
+    position: absolute;
+    width: 60%;
+}
+
+.biggallery .img-2 {
+    position: absolute;
+    left: 60%;
+    width: 40%;
+}
+
+.biggallery .img-3 {
+    position: absolute;
+    top: 27.57%;
+    width: 40%
+}
+
+.biggallery .img-4 {
+    position: absolute;
+    top: 27.57%;
+    width: 40%;
+    left: 40%;
+}
+
+.biggallery .img-5 {
+    position: absolute;
+    top: 27.57%;
+    width: 20%;
+    left: 80%;
+}
+
+.biggallery .img-6 {
+    position: absolute;
+    top: 41.36%;
+    left: 80%;
+}
+
+.biggallery .img-7 {
+    position: absolute;
+    top: 41.36%;
+    width: 40%;
+}
+
+.biggallery .img-8 {
+    position: absolute;
+    top: 55.15%;
+    left: 40%;
+    width: 20%;
+}
+
+.biggallery .img-9 {
+    position: absolute;
+    top: 55.15%;
+    left: 60%;
+    width: 40%;
+}
+
+.biggallery .img-10 {
+    position: absolute;
+    top: 68.93%;
+    width: 60%;
+}
+
+.biggallery .img-11 {
+    position: absolute;
+    top: 82.72%;
+    width: 25%;
+}
+
+.biggallery .img-12 {
+    position: absolute;
+    top: 82.72%;
+    width: 50%;
+    left: 25%;
+}
+
+.biggallery .img-13 {
+    position: absolute;
+    top: 82.72%;
+    width: 25%;
+    left: 75%;
+}
+
+.joyworld {
+    height: 90vh;
+    width: 100%;
+    position: relative;
+    background: url(../img/05-02-world/bg.png) repeat-x;
+    background-size: auto 100%;
+    animation: changeback 100s linear infinite backwards;
+}
+
+@keyframes changeback {
+    from {
+        background-position: 3176px top;
+    }
+    to {
+        background-position: 0 top;
+    }
+}
+
+.joyworld .leftpart {
+    position: absolute;
+    margin-left: 5%;
+    width: 38%;
+    background: url(../img/05-joycon/headline-pc_sp.png) no-repeat center center;
+    background-size: contain;
+}
+
+.joyworld .rightpart {
+    position: absolute;
+    left: 50%;
+    width: 39%;
+}
+.joyworld  .lead {
+    padding: 6px 18px;
+    background: rgb(230, 0, 18);
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.joyworld .rightpart .upperpart {
+    height: 40%;
+    margin-top: 15%;
+}
+
+.joyworld .rightpart .upperpart .text {
+    margin-top: 5%;
+    font-size: 14px;
+    line-height: 28px;
+    font-weight: bold;
+}
+
+.joyworld .rightpart .lowerpart .text {
+    margin-top: 5%;
+    margin-left: 32%;
+    font-size: 14px;
+    line-height: 28px;
+    font-weight: bold;
+}
+
+.oneimg {
+    position: absolute;
+    width: 30%;
+    bottom: 10%;
+    left: 0;
+}
+
+.bigimg2 {
+    width: 100%;
+}
+
+.bigimg2 img {
+    width: 100%;
+}
+
+.menu {
+    position: relative;
+    width: 100%;
+    background: rgb(230, 0, 18);
+    height: 400vh;
+}
+
+.menulogo {
+    width: 50%;
+    position: absolute;
+    left: 25%;
+    margin: 0;
+}
+
+.menulogo img {
+    display: block;
+    height: 200px;
+    display: block;
+    width: 100%;
+    margin: 91px 0 0 0;
+}
+
+.timetosale {
+    color: #fff;
+    font-size: 34px;
+    margin-bottom: 58px;
+    text-align: center;
+    display: block;
+    width: 70%;
+    margin: auto;
+    border-bottom: 3px solid white;
+}
+
+.timetosale img {
+    width: 80%;
+    height: 100%;
+    padding: 350px 0 30px 0;
+}
+
+.videos {
+    width: 70%;
+    margin: 50px auto 0;
+}
+
+.video {
+    width: 32.9%;
+    display: inline-block;
+    margin: 0 auto;
+    transition: opacity 1s;
+}
+.video img {
+    width: 100%;
+}
+
+.video .t {
+    color: white;
+    font-size: 14px;
+    margin-top: 14px;
+}
+.video .s {
+    font-size: 12px;
+    margin-top: 10px;
+    color: #fff;
+    opacity: 0.6;
+}
+
+.video:hover {
+    opacity: 0.7;
+    transition: linear;
+}
+
+.switch2017 {
+    width: 70%;
+    padding: 28px 0;
+    margin: 0 auto 90px;
+    border-bottom: 3px solid white;
+}
+.switch2017 img {
+    background: white;
+}
+
+.lineup {
+    width: 70%;
+    margin: 0 auto;
+    background: white;
+}
+.lineup img, .techspecs img, .accessories img,.controls img, .software img,.switch2017 img{
+    width: 100%;
+    cursor: pointer;
+    background: white;
+}
+
+.techspecs {
+    width: 34%;
+    margin-left: 15%;
+    margin-right: 1%;
+    display: inline-block;
+    margin: 10px 1% 10px 15%;
+    background: white;
+}
+
+.accessories {
+    display: inline-block;
+    width: 34%;
+    margin-right: 15%;
+    background: white;
+}
+.controls {
+    width: 34%;
+    margin-left: 15%;
+    margin-right: 1%;
+    display: inline-block;
+    margin: 0 1% 40px 15%;
+    background: white;
+}
+
+.software {
+    width: 70%;
+    margin: 40px auto;
+    padding: 28px 0;
+    border-top: 3px solid white;
+}
+
+.lineup :hover, .techspecs :hover, .accessories:hover ,.controls :hover, .software :hover, .switch2017:hover{
+    transition: 0.5s linear;
+    opacity: 0.7;
+}
+
+.blacklayer1, .blacklayer2, .blacklayer3, .blacklayer4, .blacklayer5,.blacklayer6, .blacklayer7, .blacklayer8, .blacklayer9, .blacklayer10,.blacklayer11,.blacklayer12, .blacklayer13, .blacklayer14{
+    background: black;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.upblacklayer1,.upblacklayer2,.upblacklayer3,.upblacklayer4, .upblacklayer5, .upblacklayer6{
+    background: black;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+}
+
+.jsselected5 {
+    animation: blacklayer1 0.5s ease-in  1 forwards;
+}
+.jsselectedup {
+    animation: blackup 0.5s ease-in 1 forwards ;
+}
+@keyframes blacklayer1 {
+    0%{width: 100%;}
+    100% {width: 0;}
+}
+
+@keyframes blackup {
+    0%{height: 100%;}
+    100%{height: 0;}
+}
+
+.foot {
+    height: 20%;
+    width: 100%;
+}
+
+.video .play {
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translateX(-50%) translateY(-50%);
+    background: url(../img/06-menu/icon_play.svg) no-repeat center;
+    opacity: 0.5;
+    background-size: cover;
+    position: relative;
+    top: -88px;
+    right: -161px;
+}
+
+
+.company span{
+    font-size: 12px;
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    color: white
+}
