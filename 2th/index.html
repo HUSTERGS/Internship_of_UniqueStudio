@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style/style.css">    
+        <script src="js/main.js"></script>    
+    </head>
+    <body>
+        <div class="demo"></div>
+        <script>
+            var demo = document.querySelector(".demo");
+            //DanmuPlayer(demo, {opacity: 1, src: "../../pagination.mp4", defaultColor: "white", height: "400px", width: "600px"})
+            var player1 = new DanmuPlayer(demo, {
+                opacity: 1, 
+                src: "../../pagination.mp4", 
+                height: "400px", width: "600px", 
+                littleWindowHeight: "200px", 
+                littleWindowWidth: "300px",
+                littleWindowTop: "0",
+                littleWindowRight: "0"
+            });
+        </script>
+    </body>
+</html>
