@@ -135,3 +135,57 @@ arrow.addEventListener("click", function () {
     biglogo.style.opacity = 0;
 })
 
+//以下为新添加内容
+var blackBg = document.querySelector(".black-bg");
+var openBtn = document.querySelector(".pic-3");
+var closeBtn = document.querySelector(".close-btn");
+var sliders = document.querySelector(".sliders");
+var sliderContainer = document.querySelector(".slider-container");
+var newWindow = document.querySelector(".new-window");
+var newWindowOpened = false;
+
+
+openBtn.addEventListener("click",function(){
+    blackBg.classList.add("black-bg-selected");
+    closeBtn.style.pointerEvents = "auto";
+    newWindow.style.pointerEvents = "auto";
+    this.style.pointerEvents = "none";
+    newWindow.classList.add("sliders-selected");
+    newWindowOpened = true;
+})
+//openBtn.addEventListener("click", openEvent);
+
+closeBtn.addEventListener("click", function(){
+    blackBg.classList.remove("black-bg-selected");
+    this.style.pointerEvents = "none";
+    newWindow.style.pointerEvents = "none";
+    openBtn.style.pointerEvents = "auto";
+    newWindow.classList.remove("sliders-selected");
+    newWindowOpened = false;
+})
+
+
+function openEvent(){
+    blackBg.classList.add("black-bg-selected");
+    closeBtn.style.pointerEvents = "auto";
+    openBtn.style.pointerEvents = "none";
+    newWindow.classList.add("slider-selected");
+    newWindowOpened = true;
+}
+
+function slideImage(num){
+    if (num === 1){
+        sliderContainer.style.transform = "translate(0,0)";
+        setTimeout(function(){
+
+        })
+    } else if (num === 2){
+        sliderContainer.style.transform = "translate(-105%,0)";
+    } else if (num === 3){
+        sliderContainer.style.transform = "translate(-210%,0)";
+    } else if (num === 4){
+        sliderContainer.style.transform = "translate(-315%,0)";
+    }
+}
+
+

@@ -74,17 +74,14 @@ body {
     width: 35px;
     background: url(../img/voice.png) no-repeat center center;
     background-size: 70% 70%;
+    display: inline-block;
+    z-index: 20000;
 }
 
 .dammu-player .current-time, .dammu-player .total-time {
     height: 35px;
     width: auto;
     line-height: 100%;
-}
-
-.dammu-player input {
-    width: 40%;
-    
 }
 
 .dammu-player .send-danmu {
@@ -111,12 +108,27 @@ body {
 
 .dammu-player .close-btn {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 8px;
+    right: 8px;
     height: 20px;
     width: 20px;
     background: url(../img/close.png) no-repeat center center;
     background-size: cover;
     z-index: 10000;
     display: none;
+    cursor: pointer;
+}
+
+.dammu-player input[type="text"] {
+    width: 25%
+}
+
+.dammu-player input[type="range"] {
+    width: 20%;
+    transition: width 2s;
+    display: inline-block;
+}
+
+.dammu-player .full-screen, .dammu-player .on-or-off{
+    cursor: pointer;
 }

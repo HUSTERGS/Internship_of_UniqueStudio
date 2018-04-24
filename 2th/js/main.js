@@ -1,6 +1,18 @@
 var DanmuPlayer = function (target, setings) {
     //传入一个对象以及相关的配置信息
+    this.defaultSetings = {
+        width: "600px",
+        height: "400px",
+        opacity: 0.8,
+        littleWindowHeight: "200px",
+        littleWindowWidth: "300px",
+        littleWindowRight: 0,
+        littleWindowTop: 0
+    }
+
+    
     this.danmuData = {};
+    //用于存放弹幕信息
     this.setings = setings;
     this.target = target;
     var that = this;
@@ -9,8 +21,8 @@ var DanmuPlayer = function (target, setings) {
     //target.cssText = "position: relative; width: " + setings.width + "height: " + setings.height + "overflow: hidden";
     target.classList.add("dammu-player");
     target.style.position = "relative";
-    target.style.width = setings.width || "600px";
-    target.style.height = setings.height || "400px";
+    target.style.width = setings.width || this.defaultSetings.width;
+    target.style.height = setings.height || this.defaultSetings.height;
 
 
     //弹幕层
@@ -58,6 +70,15 @@ var DanmuPlayer = function (target, setings) {
 
     this.voice = document.createElement("div");
     this.voice.setAttribute("class", "voice");
+    
+    //this.mainVoice = document.createElement("div");
+    //this.mainVoice.setAttribute("class", "main-voice");
+
+    this.voiceCtrl = document.createElement("input");
+    this.voiceCtrl.setAttribute("class", "voice-ctrl");
+    this.voiceCtrl.setAttribute("type", "range");
+    this.voiceCtrl.setAttribute("min", "0");
+    this.voiceCtrl.setAttribute("max", "100");
     //声音控制
 
     this.currentTime = document.createElement("div");
@@ -92,9 +113,13 @@ var DanmuPlayer = function (target, setings) {
 
     this.currentProgress.appendChild(this.progressHandle);
     this.progress.appendChild(this.currentProgress);
+    //this.mainVoice.appendChild(this.voice);
+    //this.mainVoice.appendChild(this.voiceCtrl);
     this.mainCtrl.appendChild(this.progress);
     this.mainCtrl.appendChild(this.playbtn);
+    //this.mainCtrl.appendChild(this.mainVoice);
     this.mainCtrl.appendChild(this.voice);
+    this.mainCtrl.appendChild(this.voiceCtrl);
     this.mainCtrl.appendChild(this.currentTime);
     this.mainCtrl.appendChild(this.slash);
     this.mainCtrl.appendChild(this.totalTime);
@@ -126,8 +151,7 @@ var DanmuPlayer = function (target, setings) {
     //this.danmuSize = 0;
     //this.danmuColor = setings.defaultColor;
     //this.danmuPosition = 0;
-
-
+    
     this.getDanmu = function (time) {
         time = parseInt(time);
         console.log(time);
@@ -169,7 +193,7 @@ var DanmuPlayer = function (target, setings) {
         that.danmuDiv.appendChild(bullet);
         setTimeout(function () {
             bullet.style.right = "150%";
-        }, 1000);
+        }, 500);
         setTimeout(function () {
             bullet.parentNode.removeChild(bullet);
         }, 6500);
@@ -178,11 +202,13 @@ var DanmuPlayer = function (target, setings) {
     this.onOrOff.addEventListener("click", function () {
         if (that.danmuShowed) {
             that.danmuShowed = false;
-            that.danmuDiv.style.display = "hidden";
+            //that.danmuDiv.style.opacity = 0;
+            target.removeChild(that.danmuDiv);
             this.textContent = "打开弹幕";
         } else {
             that.danmuShowed = true;
-            that.danmuDiv.style.display = "block";
+            //that.danmuDiv.style.opacity = setings.opacity || defaultSetings.opacity;
+            target.appendChild(that.danmuDiv);
             this.textContent = "关闭弹幕";
         }
     });
@@ -197,7 +223,41 @@ var DanmuPlayer = function (target, setings) {
         }
     }
 
-    //静音以及音量改变事件
+    //添加播放暂停事件
+    this.playbtn.addEventListener("click", that.playPause);
+
+    this.video.addEventListener("ended", function () {
+        that.playbtn.style.backgroundImage = "url(img/play.png)"
+    });
+
+    this.danmuDiv.addEventListener("click", that.playPause);
+
+    //静音以及音量改变事件 //这个地方很奇怪，如果我用函数名注册的话就会失败，但是直接写就没毛病。。。
+    this.voice.addEventListener("click", function(){
+        if (that.video.muted) {
+            that.video.muted = false;
+            that.voice.style.backgroundImage = "url(img/voice.png)";
+        } else {
+            that.video.muted = true;
+            that.voice.style.backgroundImage = "url(img/mute.png)";
+        }
+    });
+    //this.video.addEventListener("volumechange", this.volumeChange);
+    /*this.voice.addEventListener("mouseover" , function(){
+        that.voiceCtrl.style.visibility = "visible";
+        that.voiceCtrl.style.width = "60%";
+    });*/
+
+    /*this.mouseoveroVoice = function(){
+        that.voiceCtrl.style.visibility = "visible";
+        that.voiceCtrl.style.width = "60%";
+    }*/
+
+    /*this.mainVoice.addEventListener("mouseleave", function(){
+        that.voiceCtrl.style.width = 0;
+        setTimeout(function(){that.voiceCtrl.style.visibility = "hidden"}, 2000);
+    })*/
+
     this.mute = function () {
         if (that.video.muted) {
             that.video.muted = false;
@@ -208,24 +268,26 @@ var DanmuPlayer = function (target, setings) {
         }
     }
 
+    this.video.addEventListener("volumechange", function(){
+        if (this.muted || this.volume == 0) {
+            that.voice.style.backgroundImage = "url(img/mute.png)";
+        } else {
+            that.voice.style.backgroundImage = "url(img/voice.png)";
+        }
+    })
+
     this.volumeChange = function () {
-        if (that.video.muted) {
+        if (that.video.muted || that.video.volume == 0) {
             that.voice.style.backgroundImage = "url(img/mute.png)";
         } else {
             that.voice.style.backgroundImage = "url(img/voice.png)";
         }
     }
 
-    //添加播放暂停事件
-    this.playbtn.addEventListener("click", this.playPause);
-    this.video.addEventListener("ended", function () {
-        that.playbtn.style.backgroundImage = "url(img/play.png)"
-    });
-    this.voice.addEventListener("click", this.mute);
-    this.video.addEventListener("volumechange", this.volumeChange);
-    this.danmuDiv.addEventListener("click", that.playPause);
-    //this.video.addEventListener("play playing", function () {
-    //})
+    this.voiceCtrl.addEventListener("change", function(){
+        that.video.volume = this.value / 100;
+    })
+
 
     //设置总时间
     this.setTotalTime = function () {
@@ -285,8 +347,8 @@ var DanmuPlayer = function (target, setings) {
     this.fullScreen.addEventListener("click", function () {
         if (that.danmuPlayerFullSreen) {
             document.webkitExitFullscreen();
-            target.style.width = setings.width || "600px";
-            target.style.height = setings.height || "400px";
+            target.style.width = setings.width || that.defaultSetings.width;
+            target.style.height = setings.height || that.defaultSetings.height;
             that.danmuPlayerFullSreen = false;
             that.fullScreen.textContent = "全屏播放";
         } else {
@@ -306,40 +368,54 @@ var DanmuPlayer = function (target, setings) {
         }
     })
 
-    //发送按钮点击事件
+    //发送弹幕按钮点击事件
     this.sendbtn.addEventListener("click", function () {
-        that.getDanmu(that.video.currentTime);
+        var myTime = that.video.currentTime;
+        that.getDanmu(myTime);
+        if (that.danmuData[myTime]) {
+            that.sendDanmu(myTime);
+        }
     });
 
 
     this.danmuIn.onkeydown = function () {
+        var myTime = that.video.currentTime;
         if (event.keyCode == 13) {
-            that.getDanmu(that.video.currentTime);
+            that.getDanmu(myTime);
+        }
+        if (that.danmuData[myTime]) {
+            that.sendDanmu(myTime);
         }
     }
 
     //悬浮窗事件
     var ha = target.offsetTop + target.offsetHeight;
     window.addEventListener("scroll", function () {
-        if (this.scrollY > ha + 500) {
+        if (this.scrollY > ha + 500 && ! that.openLittleWindow) {
             target.style.position = "fixed";
-            target.style.width = setings.littleWindowWidth || "300px";
-            target.style.height = setings.littleWindowHeight || "200px";
-            target.style.top = setings.littleWindowTop || 0;
-            target.style.right = setings.littleWindowRight || 0;
+            target.style.width = setings.littleWindowWidth || that.defaultSetings.littleWindowWidth;
+            target.style.height = setings.littleWindowHeight || that.defaultSetings.littleWindowHeight;
+            target.style.top = setings.littleWindowTop || that.defaultSetings.littleWindowTop;
+            target.style.right = setings.littleWindowRight || that.defaultSetings.littleWindowRight;
             that.openLittleWindow = true;
             that.closeBtn.style.display = "inherit"
             that.danmuDiv.removeEventListener("click", that.playPause);
-        } else {
+            that.voiceCtrl.style.display = "none";
+            that.danmuIn.style.display = "none";
+            that.sendbtn.style.display = "none";
+        } else if (this.scrollY <= ha + 500 && that.openLittleWindow){
             target.style.position = "relative";
-            target.style.width = setings.width || "600px";
-            target.style.height = setings.height || "400px";
+            target.style.width = setings.width || that.defaultSetings.width;
+            target.style.height = setings.height ||that.defaultSetings.height;
             target.style.left = "auto";
             target.style.top = "auto";
             that.openLittleWindow = false;
             that.closeBtn.style.display = "none";
             target.style.display = "inherit";
             that.danmuDiv.addEventListener("click", that.playPause);
+            that.voiceCtrl.style.display = "inline-block";
+            that.danmuIn.style.display = "inline-block";
+            that.sendbtn.style.display = "inline-block";
         }
     })
 
@@ -374,13 +450,11 @@ var DanmuPlayer = function (target, setings) {
         }
         return false;
     }
-
+    //关闭悬浮窗
     this.closeBtn.addEventListener("click", function(){
         target.style.display = "none";
     })
 
-    this.createDragBar = function () {
 
-    }
 
 }

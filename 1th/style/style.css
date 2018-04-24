@@ -255,6 +255,7 @@ body {
     opacity: 1;
     transition: linear 0.1s;
     cursor: pointer;
+    pointer-events: auto;
 }
 
 .thirdpage .pic-3:hover {
@@ -1375,7 +1376,7 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 3;
+    /* z-index: 3; */
 }
 
 .upblacklayer1,.upblacklayer2,.upblacklayer3,.upblacklayer4, .upblacklayer5, .upblacklayer6{
@@ -1428,4 +1429,147 @@ body {
     font-weight: bold;
     text-align: center;
     color: white
+}
+
+
+/*以下为新添加内容*/
+.black-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(1, 0);
+    transition: all 300ms;
+    transition-delay: 200ms;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.new-window {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    transition: opacity 200ms;
+    display: block;
+    overflow: hidden;
+}
+
+
+.slide-gallery {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    left: 0;
+    height: 80%;
+    overflow: hidden;
+}
+
+.close-btn {
+    height: 56px;
+    width: 56px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 1;
+    pointer-events: none;
+    background: url(../img/close-fill-white.svg);
+    z-index: 10000;
+    cursor: pointer;
+}
+
+.slider {
+    display: block;
+    position: absolute;
+    transition: opacity 200ms;
+    margin-right: 14px;
+    height: 100%;
+    width: 100%;
+}
+
+.sliders {
+    margin: 0 auto 44px;
+    width: 70%;
+    height: 100%;
+    
+
+}
+
+.slider-container {
+    position: relative;
+    height: 95%;
+    width: 100%;
+    margin: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+}
+
+.item1 {
+    transform: translate(0, 0);
+}
+
+.item2 {
+    transform: translate(105%,0);
+}
+
+.item3 {
+    transform: translate(210%,0);
+}
+
+.item4 {
+    transform: translate(315%,0);
+}
+
+.black-bg-selected {
+    transform: scale(1,1);
+    opacity: 1;
+}
+
+.sliders-selected {
+    opacity: 1;
+}
+
+.bottom-btn {
+    text-align: center;
+}
+
+.item-nav {
+    display: inline-block;
+    position: relative;
+}
+
+.buttom {
+    width: 21px;
+    margin-right: 4px;
+    cursor: pointer;
+    position: relative;
+    float: left;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #d9d9d9;
+    z-index: 10000;
+}
+
+.inner-red {
+    transform: scale(0,1);
+    background-color: #e60012;
+    height: 100%;
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    transform-origin: left bottom;
+    transition: transform 3s;
 }

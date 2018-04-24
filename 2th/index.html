@@ -8,18 +8,29 @@
     </head>
     <body>
         <div class="demo"></div>
+        <div class="demo2"></div>
         <script>
             var demo = document.querySelector(".demo");
             //DanmuPlayer(demo, {opacity: 1, src: "../../pagination.mp4", defaultColor: "white", height: "400px", width: "600px"})
             var player1 = new DanmuPlayer(demo, {
                 opacity: 1, 
-                src: "../../pagination.mp4", 
-                height: "400px", width: "600px", 
+                src: "../../shipin.mp4", 
+                height: "500px", width: "800px", 
                 littleWindowHeight: "200px", 
                 littleWindowWidth: "300px",
                 littleWindowTop: "0",
                 littleWindowRight: "0"
             });
+            /*var demo2 = document.querySelector(".demo2");
+            var player2 = new DanmuPlayer(demo2, {
+                opacity: 1, 
+                src: "../../pagination.mp4", 
+                height: "400px", width: "600px", 
+                littleWindowHeight: "200px",
+                littleWindowWidth: "300px",
+                littleWindowTop: "0",
+                littleWindowRight: "0"
+            })*/
         </script>
     </body>
 </html>
