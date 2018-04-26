@@ -1457,9 +1457,9 @@ body {
     height: 100%;
     width: 100%;
     pointer-events: none;
-    transition: opacity 200ms;
+    transition: opacity 300ms;
+    transition-delay: 200ms;
     display: block;
-    overflow: hidden;
 }
 
 
@@ -1469,7 +1469,6 @@ body {
     right: 0;
     left: 0;
     height: 80%;
-    overflow: hidden;
 }
 
 .close-btn {
@@ -1488,7 +1487,8 @@ body {
 .slider {
     display: block;
     position: absolute;
-    transition: opacity 200ms;
+    transition: opacity 300ms;
+    transition-delay: 200ms;
     margin-right: 14px;
     height: 100%;
     width: 100%;
@@ -1498,8 +1498,7 @@ body {
     margin: 0 auto 44px;
     width: 70%;
     height: 100%;
-    
-
+    overflow: hidden;
 }
 
 .slider-container {
@@ -1571,5 +1570,12 @@ body {
     top: 0;
     width: 100%;
     transform-origin: left bottom;
-    transition: transform 3s;
+}
+
+.buttom-selected {
+    animation: changeColor 6s linear  1  ;
+}
+@keyframes changeColor {
+    from {transform: scale(0,1)}
+    to {transform: scale(1,1)}
 }
