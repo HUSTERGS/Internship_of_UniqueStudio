@@ -8,7 +8,6 @@ EventTarget.prototype = {
         if (typeof this.handlers[type] == "undefined"){
             this.handlers[type] = [];
         }
-
         this.handlers[type].push(handler);
     },
 
@@ -32,7 +31,6 @@ EventTarget.prototype = {
                     break;
                 }
             }
-
             handlers.splice(i, 1);
         }
     }

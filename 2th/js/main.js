@@ -82,12 +82,12 @@ var DanmuPlayer = function (target, setings) {
     //danmuCtrl.setAttribute("class", "danmu-ctrl");
     //弹幕控制部分
 
-    this.playbtn = document.createElement("div");
-    this.playbtn.setAttribute("class", "playbtn");
+    this.playbtn = document.createElement("i");
+    this.playbtn.setAttribute("class", "playbtn iconfont icon-bofang");
     //播放按钮
 
-    this.voice = document.createElement("div");
-    this.voice.setAttribute("class", "voice");
+    this.voice = document.createElement("i");
+    this.voice.setAttribute("class", "voice iconfont icon-shengyin");
     
     //this.mainVoice = document.createElement("div");
     //this.mainVoice.setAttribute("class", "main-voice");
@@ -114,8 +114,8 @@ var DanmuPlayer = function (target, setings) {
     this.danmuIn.setAttribute("class", "danmu-input");
     //弹幕输入
 
-    this.sendbtn = document.createElement("div");
-    this.sendbtn.setAttribute("class", "send-danmu");
+    this.sendbtn = document.createElement("i");
+    this.sendbtn.setAttribute("class", "send-danmu iconfont icon-danmu1");
     //发送弹幕
 
     this.onOrOff = document.createElement("div");
@@ -158,7 +158,7 @@ var DanmuPlayer = function (target, setings) {
     this.fullScreen.textContent = "全屏播放";
     this.onOrOff.textContent = "关闭弹幕";
     this.danmuIn.placeholder = "您可以在这里输入弹幕吐槽哦~";
-    this.sendbtn.textContent = "发送>";
+    //this.sendbtn.textContent = "发送>";
 
     this.openLittleWindow = false;
     this.duration = this.video.duration;
@@ -220,7 +220,7 @@ var DanmuPlayer = function (target, setings) {
         that.fire(sendBullet);
     }
 
-    this.onOrOff.addEventListener("click", function () {
+    this.onOrOffFn = function () {
         if (that.danmuShowed) {
             that.danmuShowed = false;
             //that.danmuDiv.style.opacity = 0;
@@ -232,15 +232,21 @@ var DanmuPlayer = function (target, setings) {
             target.appendChild(that.danmuDiv);
             this.textContent = "关闭弹幕";
         }
-    });
+    }
+
+    this.onOrOff.addEventListener("click", that.onOrOffFn);
     //播放暂停
     this.playPause = function () {
         if (that.video.paused) {
             that.video.play();
-            that.playbtn.style.backgroundImage = "url(img/pause.png)"
+            that.playbtn.classList.remove("icon-bofang");
+            that.playbtn.classList.add("icon-icon-")
+            //that.playbtn.style.backgroundImage = "url(img/pause.png)"
         } else {
             that.video.pause();
-            that.playbtn.style.backgroundImage = "url(img/play.png)"
+            that.playbtn.classList.remove("icon-icon-");
+            that.playbtn.classList.add("icon-bofang");
+            //that.playbtn.style.backgroundImage = "url(img/play.png)"
         }
     }
 
@@ -248,7 +254,9 @@ var DanmuPlayer = function (target, setings) {
     this.playbtn.addEventListener("click", that.playPause);
 
     this.video.addEventListener("ended", function () {
-        that.playbtn.style.backgroundImage = "url(img/play.png)"
+        that.playbtn.classList.remove("icon-icon-");
+        that.playbtn.classList.add("icon-bofang");
+        //that.playbtn.style.backgroundImage = "url(img/play.png)"
     });
 
     this.danmuDiv.addEventListener("click", that.playPause);
@@ -257,10 +265,14 @@ var DanmuPlayer = function (target, setings) {
     this.mute = function () {
         if (that.video.muted) {
             that.video.muted = false;
-            that.voice.style.backgroundImage = "url(img/voice.png)";
+            that.voice.classList.remove("icon-icon-1");
+            that.voice.classList.add("icon-shengyin");
+            //that.voice.style.backgroundImage = "url(img/voice.png)";
         } else {
             that.video.muted = true;
-            that.voice.style.backgroundImage = "url(img/mute.png)";
+            that.voice.classList.remove("icon-shengyin");
+            that.voice.classList.add("icon-icon-1");
+            //that.voice.style.backgroundImage = "url(img/mute.png)";
         }
     }
 
@@ -268,9 +280,13 @@ var DanmuPlayer = function (target, setings) {
 
     this.volumeChange = function () {
         if (that.video.muted || that.video.volume == 0) {
-            that.voice.style.backgroundImage = "url(img/mute.png)";
+            that.voice.classList.remove("icon-shengyin");
+            that.voice.classList.add("icon-icon-1");
+            //that.voice.style.backgroundImage = "url(img/mute.png)";
         } else {
-            that.voice.style.backgroundImage = "url(img/voice.png)";
+            that.voice.classList.remove("icon-icon-1");
+            that.voice.classList.add("icon-shengyin");
+            //that.voice.style.backgroundImage = "url(img/voice.png)";
         }
     }
 
@@ -365,6 +381,7 @@ var DanmuPlayer = function (target, setings) {
     this.sendbtn.addEventListener("click", function () {
         var myTime = that.video.currentTime;
         that.getDanmu(myTime);
+        console.log("cds");
         if (that.danmuData[myTime]) {
             that.sendDanmu(myTime);
         }

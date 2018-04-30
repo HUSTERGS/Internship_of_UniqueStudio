@@ -13,6 +13,7 @@ body {
 .dammu-player {
     background: gray;
     overflow: hidden;
+    border: 1px solid black;
 }
 
 .dammu-player video {
@@ -62,7 +63,8 @@ body {
 .dammu-player .playbtn{
     width: 35px;
     height: 35px;
-    background: url(../img/play.png) no-repeat center center;
+    font-size: 2em;
+    /*background: url(../img/play.png) no-repeat center center;*/
     background-size: cover;
     color: white;
     text-align: center;
@@ -70,12 +72,14 @@ body {
 }
 
 .dammu-player .voice {
+    font-size: 2em;
     height: 35px;
     width: 35px;
-    background: url(../img/voice.png) no-repeat center center;
+    /*background: url(../img/voice.png) no-repeat center center;*/
     background-size: 70% 70%;
     display: inline-block;
     z-index: 20000;
+    color: white;
 }
 
 .dammu-player .current-time, .dammu-player .total-time {
@@ -86,16 +90,17 @@ body {
 
 .dammu-player .send-danmu {
     color: white;
-    background-color: dodgerblue;
+    font-size: 1em;
+    /*background-color: dodgerblue;*/
     line-height: 25px;
     cursor: pointer;
     text-align: center;
     display: inline;
 }
 
-.dammu-player .send-danmu:hover {
+/*.dammu-player .send-danmu:hover {
     background-color:#222;;
-}
+}*/
 
 .dammu-player .bullet {
     position: absolute;
@@ -120,7 +125,7 @@ body {
 }
 
 .dammu-player input[type="text"] {
-    width: 25%
+    width: 25%;
 }
 
 .dammu-player input[type="range"] {
