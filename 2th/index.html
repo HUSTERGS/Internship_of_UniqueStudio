@@ -3,8 +3,11 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="style/style.css">    
-        <script src="js/main.js"></script>    
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+        <script src="../3th/promisedemo.js" type="text/javascript"></script>    
+        <script src="js/EventEmitter.js" type="text/javascript"></script>  
+        <script src="js/main.js" type="text/javascript"></script>  
+        <script src="../3th/learnpromise.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="demo"></div>
@@ -19,8 +22,21 @@
                 littleWindowHeight: "200px", 
                 littleWindowWidth: "300px",
                 littleWindowTop: "0",
-                littleWindowRight: "0"
+                littleWindowRight: "0",
+                useArray: true,
+                arrayData: [{time: 10, text: "good"}],
+                usePromise: true,
+                promise: new Promise(function(resoleve, reject){
+                    
+                })
             });
+            player1.addHandler("floatWindowMove", function(e){
+                console.log("我被移动了");
+                //console.log(e.positionX);
+                console.log(e.self);
+            });
+            player1.addHandler("windowClosed", function(){console.log("我被关闭了")})
+            player1.addHandler("danmuSent", function(e){console.log(e.self)})
             /*var demo2 = document.querySelector(".demo2");
             var player2 = new DanmuPlayer(demo2, {
                 opacity: 1, 

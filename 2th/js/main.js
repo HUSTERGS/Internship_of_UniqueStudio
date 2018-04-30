@@ -1,4 +1,7 @@
 var DanmuPlayer = function (target, setings) {
+
+    EventTarget.call(this);
+    
     //传入一个对象以及相关的配置信息
     this.defaultSetings = {
         width: "600px",
@@ -7,7 +10,9 @@ var DanmuPlayer = function (target, setings) {
         littleWindowHeight: "200px",
         littleWindowWidth: "300px",
         littleWindowRight: 0,
-        littleWindowTop: 0
+        littleWindowTop: 0,
+        useArray: false,
+        arrayData: null,
     }
 
     
@@ -16,6 +21,19 @@ var DanmuPlayer = function (target, setings) {
     this.setings = setings;
     this.target = target;
     var that = this;
+    //接受数组作为弹幕来源
+    if (setings.useArray || defaultSetings.useArray){
+        for (let i = 0; i < setings.arrayData.length; i++){
+            that.danmuData[setings.arrayData[i].time] = {
+                time: setings.arrayData[i].time,
+                value: setings.arrayData[i].text.replace(/&/g, "&gt;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/\n/g, "<br>"),
+                color: setings.arrayData[i].color || randomColor(),
+                top: setings.arrayData[i].top
+            }
+        }
+    }
+
+    
 
     //设置基本样式
     //target.cssText = "position: relative; width: " + setings.width + "height: " + setings.height + "overflow: hidden";
@@ -197,6 +215,9 @@ var DanmuPlayer = function (target, setings) {
         setTimeout(function () {
             bullet.parentNode.removeChild(bullet);
         }, 6500);
+        var sendBullet = new Event("danmuSent");
+        sendBullet.self = bullet;
+        that.fire(sendBullet);
     }
 
     this.onOrOff.addEventListener("click", function () {
@@ -232,32 +253,7 @@ var DanmuPlayer = function (target, setings) {
 
     this.danmuDiv.addEventListener("click", that.playPause);
 
-    //静音以及音量改变事件 //这个地方很奇怪，如果我用函数名注册的话就会失败，但是直接写就没毛病。。。
-    this.voice.addEventListener("click", function(){
-        if (that.video.muted) {
-            that.video.muted = false;
-            that.voice.style.backgroundImage = "url(img/voice.png)";
-        } else {
-            that.video.muted = true;
-            that.voice.style.backgroundImage = "url(img/mute.png)";
-        }
-    });
-    //this.video.addEventListener("volumechange", this.volumeChange);
-    /*this.voice.addEventListener("mouseover" , function(){
-        that.voiceCtrl.style.visibility = "visible";
-        that.voiceCtrl.style.width = "60%";
-    });*/
-
-    /*this.mouseoveroVoice = function(){
-        that.voiceCtrl.style.visibility = "visible";
-        that.voiceCtrl.style.width = "60%";
-    }*/
-
-    /*this.mainVoice.addEventListener("mouseleave", function(){
-        that.voiceCtrl.style.width = 0;
-        setTimeout(function(){that.voiceCtrl.style.visibility = "hidden"}, 2000);
-    })*/
-
+    //静音以及音量改变事件
     this.mute = function () {
         if (that.video.muted) {
             that.video.muted = false;
@@ -268,13 +264,7 @@ var DanmuPlayer = function (target, setings) {
         }
     }
 
-    this.video.addEventListener("volumechange", function(){
-        if (this.muted || this.volume == 0) {
-            that.voice.style.backgroundImage = "url(img/mute.png)";
-        } else {
-            that.voice.style.backgroundImage = "url(img/voice.png)";
-        }
-    })
+    
 
     this.volumeChange = function () {
         if (that.video.muted || that.video.volume == 0) {
@@ -283,6 +273,9 @@ var DanmuPlayer = function (target, setings) {
             that.voice.style.backgroundImage = "url(img/voice.png)";
         }
     }
+
+    this.video.addEventListener("volumechange", that.volumeChange);
+    this.voice.addEventListener("click", that.mute);
 
     this.voiceCtrl.addEventListener("change", function(){
         that.video.volume = this.value / 100;
@@ -443,6 +436,11 @@ var DanmuPlayer = function (target, setings) {
             }
             target.style.left = l + "px";
             target.style.top = t + "px";
+            var windowMoveEv = new Event('floatWindowMove');
+            windowMoveEv.self = target;
+            windowMoveEv.positionX = l;
+            windowMoveEv.positionY = t;
+            that.fire(windowMoveEv);
         }
         document.onmouseup = function () {
             document.onmousemove = null;
@@ -453,8 +451,14 @@ var DanmuPlayer = function (target, setings) {
     //关闭悬浮窗
     this.closeBtn.addEventListener("click", function(){
         target.style.display = "none";
+        var windowClose = new Event('windowClosed');
+        that.fire(windowClose);
     })
 
+    
 
 
 }
+
+DanmuPlayer.prototype = new EventTarget();
+DanmuPlayer.prototype.constructor = DanmuPlayer;
