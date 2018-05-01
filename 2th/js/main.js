@@ -1,7 +1,7 @@
 var DanmuPlayer = function (target, setings) {
 
     EventTarget.call(this);
-    
+
     //传入一个对象以及相关的配置信息
     this.defaultSetings = {
         width: "600px",
@@ -15,15 +15,15 @@ var DanmuPlayer = function (target, setings) {
         arrayData: null,
     }
 
-    
+
     this.danmuData = {};
     //用于存放弹幕信息
     this.setings = setings;
     this.target = target;
     var that = this;
     //接受数组作为弹幕来源
-    if (setings.useArray || defaultSetings.useArray){
-        for (let i = 0; i < setings.arrayData.length; i++){
+    if (setings.useArray || defaultSetings.useArray) {
+        for (let i = 0; i < setings.arrayData.length; i++) {
             that.danmuData[setings.arrayData[i].time] = {
                 time: setings.arrayData[i].time,
                 value: setings.arrayData[i].text.replace(/&/g, "&gt;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/\n/g, "<br>"),
@@ -33,7 +33,7 @@ var DanmuPlayer = function (target, setings) {
         }
     }
 
-    
+
 
     //设置基本样式
     //target.cssText = "position: relative; width: " + setings.width + "height: " + setings.height + "overflow: hidden";
@@ -88,7 +88,7 @@ var DanmuPlayer = function (target, setings) {
 
     this.voice = document.createElement("i");
     this.voice.setAttribute("class", "voice iconfont icon-shengyin");
-    
+
     //this.mainVoice = document.createElement("div");
     //this.mainVoice.setAttribute("class", "main-voice");
 
@@ -169,7 +169,7 @@ var DanmuPlayer = function (target, setings) {
     //this.danmuSize = 0;
     //this.danmuColor = setings.defaultColor;
     //this.danmuPosition = 0;
-    
+
     this.getDanmu = function (time) {
         time = parseInt(time);
         console.log(time);
@@ -276,7 +276,7 @@ var DanmuPlayer = function (target, setings) {
         }
     }
 
-    
+
 
     this.volumeChange = function () {
         if (that.video.muted || that.video.volume == 0) {
@@ -293,7 +293,7 @@ var DanmuPlayer = function (target, setings) {
     this.video.addEventListener("volumechange", that.volumeChange);
     this.voice.addEventListener("click", that.mute);
 
-    this.voiceCtrl.addEventListener("change", function(){
+    this.voiceCtrl.addEventListener("change", function () {
         that.video.volume = this.value / 100;
     })
 
@@ -401,7 +401,7 @@ var DanmuPlayer = function (target, setings) {
     //悬浮窗事件
     var ha = target.offsetTop + target.offsetHeight;
     window.addEventListener("scroll", function () {
-        if (this.scrollY > ha + 500 && ! that.openLittleWindow) {
+        if (this.scrollY > ha + 500 && !that.openLittleWindow) {
             target.style.position = "fixed";
             target.style.width = setings.littleWindowWidth || that.defaultSetings.littleWindowWidth;
             target.style.height = setings.littleWindowHeight || that.defaultSetings.littleWindowHeight;
@@ -413,10 +413,10 @@ var DanmuPlayer = function (target, setings) {
             that.voiceCtrl.style.display = "none";
             that.danmuIn.style.display = "none";
             that.sendbtn.style.display = "none";
-        } else if (this.scrollY <= ha + 500 && that.openLittleWindow){
+        } else if (this.scrollY <= ha + 500 && that.openLittleWindow) {
             target.style.position = "relative";
             target.style.width = setings.width || that.defaultSetings.width;
-            target.style.height = setings.height ||that.defaultSetings.height;
+            target.style.height = setings.height || that.defaultSetings.height;
             target.style.left = "auto";
             target.style.top = "auto";
             that.openLittleWindow = false;
@@ -453,10 +453,13 @@ var DanmuPlayer = function (target, setings) {
             }
             target.style.left = l + "px";
             target.style.top = t + "px";
-            var windowMoveEv = new Event('floatWindowMove');
+            var windowMoveEv = new Event('floatWindowMove'/*, {
+                'cancelable': true,
+            }*/);
             windowMoveEv.self = target;
             windowMoveEv.positionX = l;
             windowMoveEv.positionY = t;
+            //windowMoveEv.preventDefault = function(){windowMoveEv.defaultPrevented = true;}
             that.fire(windowMoveEv);
         }
         document.onmouseup = function () {
@@ -466,13 +469,27 @@ var DanmuPlayer = function (target, setings) {
         return false;
     }
     //关闭悬浮窗
-    this.closeBtn.addEventListener("click", function(){
+    this.closeBtn.addEventListener("click", function () {
         target.style.display = "none";
         var windowClose = new Event('windowClosed');
         that.fire(windowClose);
     })
 
-    
+    this.getDanmuByPro = function (promise) {
+        promise.then(function (data) {
+            for (let i = 0; i < data.length; i++) {
+                that.danmuData[data[i].time] = {
+                    time: data[i].time,
+                    value: data[i].text.replace(/&/g, "&gt;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/\n/g, "<br>"),
+                    color: data[i].color || randomColor(),
+                    top: data[i].top
+                }
+            }
+        }, function () {
+            data = null;
+        })
+    }
+    this.getDanmuByPro(setings.promise);
 
 
 }

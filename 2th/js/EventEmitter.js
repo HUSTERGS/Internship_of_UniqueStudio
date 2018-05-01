@@ -35,3 +35,7 @@ EventTarget.prototype = {
         }
     }
 };
+
+var experiment = new EventTarget();
+experiment.addHandler("eat", function(){alert("I want fish");});
+experiment.fire({type: 'eat'});

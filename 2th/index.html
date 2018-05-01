@@ -27,17 +27,18 @@
                 useArray: true,
                 arrayData: [{time: 10, text: "good"}],
                 usePromise: true,
-                promise: new Promise(function(resoleve, reject){
-
+                promise: new Promise(function(resolve, reject){
+                    resolve([{time: 18, text: "bad"}]);
                 })
             });
             player1.addHandler("floatWindowMove", function(e){
-                console.log("我被移动了");
-                //console.log(e.positionX);
-                console.log(e.self);
+                e.preventDefault();
+                //console.log("我被移动了");
+                console.log(e);
             });
-            player1.addHandler("windowClosed", function(){console.log("我被关闭了")})
-            player1.addHandler("danmuSent", function(e){console.log(e.self)})
+            player1.addHandler("windowClosed", function(){console.log("我被关闭了")});
+            player1.addHandler("danmuSent", function(e){console.log(e.self)});
+            
             /*var demo2 = document.querySelector(".demo2");
             var player2 = new DanmuPlayer(demo2, {
                 opacity: 1, 
