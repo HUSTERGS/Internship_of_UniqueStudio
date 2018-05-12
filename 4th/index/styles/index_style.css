@@ -4,23 +4,36 @@
 
 body {
     margin: 0;
-    width: 100%;
+    
 }
 
 .head-text, .text-des-ad, .change-btn, .change-btn, .kindle-title, .box {
     text-align: center;
 }
 
+.kindle-mac, .advantage1, .advantage2, .advantage3, .content-container, .text-des-ad, .sample-mac {
+    height: 100%;;
+}
+
+body, .main-page, .advantages, .advantage1, .advantage2, .advantage3, .top-barrier, .change-btn, .know-more,  .more-about-kindle {
+    width: 100%;
+}
+
+.head-text, .hover-div, .origin-pic, .choices, .nav:hover .top-tag, .nav:hover .kindle-tag, .nav:hover .search-tag, .nav:hover .main-tag, .advantage1, .advantage2, .advantage3, .top-barrier, .little-square, .change-btn {
+    position: absolute;
+}
+
+.main-page, .status-line, .logo-d, .advantages, .content-container {
+    position: relative;
+}
+
 .main-page {
     height: 100vh;
-    width: 100%;
-    position: relative;
     display: flex;
     overflow: hidden;
 }
 
 .head-text {
-    position: absolute;
     left: 0;
     right: 0;
     bottom: 10%;
@@ -37,7 +50,6 @@ body {
 
 .status-line {
     opacity: 0;
-    position: relative;
     right: 47%;
     top: -13%;
     transition: opacity 2s linear;
@@ -50,7 +62,6 @@ body {
 }
 
 .logo-d {
-    position: relative;
     top : -4.5%;
     left: -13.6%;
 }
@@ -74,9 +85,7 @@ body {
     height: 400px;
     width: 400px;
     border-radius: 50% 50% 50% 50%;
-    position: absolute;
-    background: url(../../切图/header/img-original-bg.png) fixed center center no-repeat;
-    background-size: 100% 100%;
+    background: url(../../切图/header/img-original-bg.png) center center / 100% 100% no-repeat fixed;
 }
 
 .nav {
@@ -93,7 +102,6 @@ body {
 }
 
 .origin-pic {
-    position: absolute;
     opacity: 1;
     transform: scale(1,1) translate(260%, 100%);
     transition: transform 1s, opacity 4s ease-in-out;
@@ -101,9 +109,7 @@ body {
 
 .choices {
     opacity: 0;
-    position: absolute;
     transform: translate(150%,50%);
-
     transition: transform 1s 0.5s, opacity 1s 0.5s ease-in-out;
 }
 
@@ -118,36 +124,29 @@ body {
 }
 
 .nav:hover .top-tag {
-    position: absolute;
     transform: translate(80%,-12%);
 }
 
 .nav:hover .kindle-tag {
-    position: absolute;
     transform: translate(12%, 50%);
 }
 
 .nav:hover .search-tag {
-    position: absolute;
     transform: translate(150%, 50%);
 }
 
 .nav:hover .main-tag {
-    position: absolute;
     transform: translate(80%, 112%);
 }
 
 .read-feel {
     height: 100vh;
-    width: 100%;
-    background: url(../../切图/Banner1/banner_bg.png) center center no-repeat;
-    background-size: cover;
+    background: url(../../切图/Banner1/banner_bg.png) center center / 100% no-repeat;
     display: flex;
 }
 
 .kindle-mac {
     display: flex;
-    height: 100%;
     width: fit-content;
 }
 
@@ -172,68 +171,47 @@ body {
 .advantages {
     height: 100vh;
     overflow: hidden;
-    position: relative;
+    
 }
 
 .advantage1 {
-    background: url(../../切图/Banner2/01/img_1.png) center center no-repeat;
-    background-size: 100% 100%;
-    height: 100%;
-    width: 100%;
-    position: absolute;
+    background: url(../../切图/Banner2/01/img_1.png) center center / 100% no-repeat;
 }
 
 .advantage2 {
-    background: url(../../切图/Banner2/02/img_2.png) center center no-repeat;
-    background-size: 100% 100%;
-    height: 100%;
-    width: 100%;
-    position: absolute;
+    background: url(../../切图/Banner2/02/img_2.png) center center / 100% no-repeat;
     transform: translateX(100%);
 }
 
 .advantage3 {
-    background: url(../../切图/Banner2/03/img_3.png) center center no-repeat;
-    background-size: 100% 100%;
-    height: 100%;
-    width: 100%;
-    position: absolute;
+    background: url(../../切图/Banner2/03/img_3.png) center center / 100% no-repeat;
     transform: translateX(200%);
 }
 
 .content-container {
-    height: 100%;
-    position: relative;
     transition: transform 1s ease-out;
 }
 
 .top-barrier {
-    position: absolute;
     z-index: 100;
     top: 0;
-    width: 100%;
 }
 
 .text-des-ad {
-    height: 100%;
     width: 45%;
-    background-size: 100%;
     margin-left: 4%;
 }
 
 .number1 {
-    background: url(../../切图/Banner2/01/img_square.png) center center no-repeat;
-    background-size: 100%;
+    background: url(../../切图/Banner2/01/img_square.png) center center / 100% no-repeat;
 }
 
 .number2 {
-    background: url(../../切图/Banner2/02/img_square.png) center center no-repeat;
-    background-size: 100%;
+    background: url(../../切图/Banner2/02/img_square.png) center center / 100% no-repeat;
 }
 
 .number3 {
-    background: url(../../切图/Banner2/03/img_square.png) center center no-repeat;
-    background-size: 100%;
+    background: url(../../切图/Banner2/03/img_square.png) center center / 100% no-repeat;
 }
 
 .first-des-ad {
@@ -245,15 +223,12 @@ body {
 }
 
 .little-square {
-    position: absolute;
     top: 80%;
     left: 40%;
 }
 
 .change-btn {
-    position: absolute;
     bottom: 10px;
-    width: 100%;
 }
 
 .change-btn img {
@@ -266,21 +241,16 @@ body {
 
 .know-more,  .more-about-kindle{
     padding: 40px 0;
-    width: 100%;
     height: 80vh;
 }
 
 .card {
-    background: url(../../切图/list/img_card.png) no-repeat;
+    background: url(../../切图/list/img_card.png)  no-repeat;
     background-size: cover;
     display: flex;
     width: 80%;
     margin: 0 auto;
     height: 98%;
-}
-
-.sample-mac{
-    height: 100%;
 }
 
 .sample-mac img {
