@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <link href="styles/index_style.css" type="text/css" rel="stylesheet">
-
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 
 <body>
-    <div class="main-page">
+    <div class="main-page" id="main">
         <img src="../切图/header/img-bg.png" class="main-pic">
         <div class="hover-div"></div>
         <div class="head-text">
@@ -21,21 +21,24 @@
             <img src="../切图/header/logo-Le.png" class="logo-le">
         </div>
         <div class="nav">
-            <div class="top-tag">
+            <div class="top-tag choices">
                 <img src="../切图/nav/Top.png">
             </div>
-            <div class="kindle-tag">
+            <div class="kindle-tag choices">
                 <img src="../切图/nav/Kindle.png">
             </div>
-            <div class="search-tag">
+            <div class="search-tag choices">
                 <img src="../切图/nav/Search.png">
             </div>
-            <div class="main-tag">
+            <div class="main-tag choices">
                 <img src="../切图/nav/Main.png">
+            </div>
+            <div class="origin-pic">
+                <img src="../切图/nav/nav-original.png">
             </div>
         </div>
     </div>
-    <div class="read-feel">
+    <div class="read-feel" id="read-feel">
         <div class="kindle-mac">
             <img src="../切图/Banner1/img_black.png">
             <img src="../切图/Banner1/img_white.png">
@@ -46,44 +49,109 @@
             <img src="../切图/Banner1/img_text03.png">
         </div>
     </div>
-    <div class="advantages">
+    <div class="advantages" id="advantages">
+        <img src="../切图/Banner2/01/img_top.png" class="top-barrier">
         <div class="content-container">
             <div class="advantage1">
-                <img src="../切图/Banner2/01/img_top.png" class="top-barrier">
                 <div class="text-des-ad number1">
-                    <img src="../切图/Banner2/01/img_texttop.png" class="first-des-ad"><br>
-                    <img src="../切图/Banner2/01/img_text01.png" class="second-des-ad"><br>
+                    <img src="../切图/Banner2/01/img_texttop.png" class="first-des-ad">
+                    <br>
+                    <img src="../切图/Banner2/01/img_text01.png" class="second-des-ad">
+                    <br>
                     <img src="../切图/Banner2/01/img_textbottom.png" class="third-des-ad">
                 </div>
                 <img src="../切图/Banner2/01/img_square2.png" class="little-square">
             </div>
             <div class="advantage2">
-                <img src="../切图/Banner2/02/img_top.png" class="top-barrier">
                 <div class="text-des-ad number2">
-                    <img src="../切图/Banner2/02/img_texttop.png" class="first-des-ad"><br>
-                    <img src="../切图/Banner2/02/img_text01.png" class="second-des-ad"><br>
+                    <img src="../切图/Banner2/02/img_texttop.png" class="first-des-ad">
+                    <br>
+                    <img src="../切图/Banner2/02/img_text01.png" class="second-des-ad">
+                    <br>
                     <img src="../切图/Banner2/02/img_textbottom.png" class="third-des-ad">
                 </div>
                 <img src="../切图/Banner2/02/img_square2.png" class="little-square">
             </div>
             <div class="advantage3">
-                <img src="../切图/Banner2/03/img_top.png" class="top-barrier">
                 <div class="text-des-ad number3">
-                    <img src="../切图/Banner2/03/img_texttop.png" class="first-des-ad"><br>
-                    <img src="../切图/Banner2/03/img_text01.png" class="second-des-ad"><br>
+                    <img src="../切图/Banner2/03/img_texttop.png" class="first-des-ad">
+                    <br>
+                    <img src="../切图/Banner2/03/img_text01.png" class="second-des-ad">
+                    <br>
                     <img src="../切图/Banner2/03/img_textbottom.png" class="third-des-ad">
                 </div>
                 <img src="../切图/Banner2/03/img_square2.png" class="little-square">
             </div>
         </div>
         <div class="change-btn">
-                <div class="left-btn">
-                    <img src="../切图/Banner2/01/btn_left.png">
+            <div class="left-btn">
+                <img src="../切图/Banner2/01/btn_left.png">
+            </div>
+            <div class="right-btn">
+                <img src="../切图/Banner2/01/btn_right.png">
+            </div>
+        </div>
+    </div>
+    <div class="know-more" id="know-more">
+        <div class="card">
+            <div class="left-bar">
+                <img src="../切图/list/img_square1.png">
+            </div>
+            <div class="sample-mac">
+                <img src="../切图/list/img_item1.png">
+            </div>
+            <div class="right-bar">
+                <div class="kindle-title">
+                    <img src="../切图/list/img_text01.png">
                 </div>
-                <div class="right-btn">
-                    <img src="../切图/Banner2/01/btn_right.png">
+                <div class="know-more-link">
+                    <a href="../pages/more.html">
+                        <img src="../切图/list/img_text02.png">
+                        <img src="../切图/list/btn_next.png" class="more next">
+                    </a>
+                </div>
+                <div class="buy-link">
+                    <img src="../切图/list/img_text03.png">
+                    <img src="../切图/list/btn_next.png" class="buy next">
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="more-about-kindle">
+        <div class="card2">
+            <div class="amazon-book-store box">
+                <img src="../落下的。。。我的锅/亚马逊书城.png">
+            </div>
+            <div class="make-your-kindle box">
+                <img src="../落下的。。。我的锅/打造属于您的Kindle.png">
+                <img src="../落下的。。。我的锅/img_arrow.png" class="arrow1">
+            </div>
+            <div class="more-things box">
+                <img src="../落下的。。。我的锅/更多商品.png">
+            </div>
+            <div class="books-choices box">
+                <img src="../落下的。。。我的锅/img_arrow.png" class="arrow2">
+                <img src="../落下的。。。我的锅/海量图书任您挑选.png">
+            </div>
+            <div class="parts-store box">
+                <img src="../落下的。。。我的锅/配件商城.png">
+            </div>
+            <div class="more-in-amazon box">
+                <img src="../落下的。。。我的锅/img_arrow.png" class="arrow3">
+                <img src="../落下的。。。我的锅/更多商品尽在亚马逊.png">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="details">
+            <img src="../落下的。。。我的锅/了解我们人才招聘关于我们新闻中心公益社区移动客户端风险监测.png">
+            <img src="../落下的。。。我的锅/合作信息全球开店我要开店加入联盟我要推广合作伙伴.png">
+            <img src="../落下的。。。我的锅/支付方式亚马逊支付亚马逊帐户支付宝与微信支付重要安全提示.png">
+            <img src="../落下的。。。我的锅/帮助中心和购物指南订单查询配送费收取标准在线自助退换货退换货及退款亚马逊助手帮助中心.png">
+        </div>
+        <div class="copyright">
+            <img src="../落下的。。。我的锅/美国加拿大巴西墨西哥英国德国法国西班牙意大利荷兰日本印度.png">
+        </div>
     </div>
     <script src="js/js.js"></script>
 </body>

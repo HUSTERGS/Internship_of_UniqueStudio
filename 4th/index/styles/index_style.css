@@ -1,6 +1,14 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     margin: 0;
     width: 100%;
+}
+
+.head-text, .text-des-ad, .change-btn, .change-btn, .kindle-title, .box {
+    text-align: center;
 }
 
 .main-page {
@@ -12,7 +20,6 @@ body {
 }
 
 .head-text {
-    text-align: center;
     position: absolute;
     left: 0;
     right: 0;
@@ -85,28 +92,49 @@ body {
     z-index: 1000;
 }
 
-.top-tag {
+.origin-pic {
     position: absolute;
-    top: 0;
-    right: 40px;
+    opacity: 1;
+    transform: scale(1,1) translate(260%, 100%);
+    transition: transform 1s, opacity 4s ease-in-out;
 }
 
-.kindle-tag {
+.choices {
+    opacity: 0;
     position: absolute;
-    left: 14px;
-    top: 42px;
+    transform: translate(150%,50%);
+
+    transition: transform 1s 0.5s, opacity 1s 0.5s ease-in-out;
 }
 
-.search-tag {
-    position: absolute;
-    right: 0;
-    top: 42px;
+.nav:hover .origin-pic {
+    transform: scale(1.5,1.5) translate(175%, 70%);
+    opacity: 0;
+    pointer-events: none;
 }
 
-.main-tag {
+.nav:hover .choices {
+    opacity: 1;
+}
+
+.nav:hover .top-tag {
     position: absolute;
-    bottom: 8px;
-    right: 40px;
+    transform: translate(80%,-12%);
+}
+
+.nav:hover .kindle-tag {
+    position: absolute;
+    transform: translate(12%, 50%);
+}
+
+.nav:hover .search-tag {
+    position: absolute;
+    transform: translate(150%, 50%);
+}
+
+.nav:hover .main-tag {
+    position: absolute;
+    transform: translate(80%, 112%);
 }
 
 .read-feel {
@@ -132,6 +160,7 @@ body {
     padding-top: 10%;
     padding-left: 2%;
 }
+
 .text-des img{
     display: block;
 }
@@ -180,12 +209,12 @@ body {
 
 .top-barrier {
     position: absolute;
+    z-index: 100;
     top: 0;
     width: 100%;
 }
 
 .text-des-ad {
-    text-align: center;
     height: 100%;
     width: 45%;
     background-size: 100%;
@@ -223,7 +252,6 @@ body {
 
 .change-btn {
     position: absolute;
-    text-align: center;
     bottom: 10px;
     width: 100%;
 }
@@ -234,4 +262,103 @@ body {
 
 .left-btn, .right-btn {
     display: inline;
+}
+
+.know-more,  .more-about-kindle{
+    padding: 40px 0;
+    width: 100%;
+    height: 80vh;
+}
+
+.card {
+    background: url(../../切图/list/img_card.png) no-repeat;
+    background-size: cover;
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    height: 98%;
+}
+
+.sample-mac{
+    height: 100%;
+}
+
+.sample-mac img {
+    margin: 40px 20px;
+    height: 86%;
+}
+
+.left-bar img{
+    height: 94%;
+}
+
+.right-bar {
+    width: 80%;
+    height: 101%;
+    background: url(../../切图/list/img_square2.png)  no-repeat;
+    background-size: contain;
+}
+
+.kindle-title {
+    width: 80%;
+    margin: 80px auto;
+}
+
+.know-more-link, .buy-link {
+    width: 80%;
+    margin: 50px auto;
+}
+
+.next {
+    margin-left: 40px;
+}
+
+.card2 {
+    background: url(../../切图/list/img_card.png) no-repeat;
+    background-size: cover;
+    width: 910px;
+    margin: 0 auto;
+    height: 638px;
+}
+
+.box {
+    float: left;
+    height: 300px;
+    width: 300px;
+}
+
+.box img {
+    transform: scale(0.8,0.8);
+    margin: 40% 10% 10% 10%;
+}
+
+.box .arrow1 {
+    margin: 0;
+    transform: rotate(180deg);
+}
+
+.box .arrow2, .box .arrow3{
+    margin: 10% 0 -20% 0;
+}
+
+
+.box:nth-child(2n-1) {
+    background: url(../../落下的。。。我的锅/img_square.png) center center no-repeat;
+    background-size: contain;
+}
+
+.footer {
+    background: url(../../落下的。。。我的锅/底.png);
+    margin-top: 80px;
+    padding-top: 40px;
+}
+
+.details img {
+    vertical-align: text-top;
+    margin-top: 60px;
+    margin-left: 130px;
+}
+
+.copyright img {
+    margin: 80px auto 33px 40px;
 }

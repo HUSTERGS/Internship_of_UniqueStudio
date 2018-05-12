@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.kindle-mac {
+    margin-top: 50px;
+    margin-left: 80px;
+    vertical-align: middle;
+}
+
+.sample-mac {
+    position: relative;
+}
+
+.prevent-water {
+    position: absolute;
+    top: 70px;
+    left: 36px;
+}
+
+.prevent-water img {
+    display: block;
+}
+
+.string1 {
+    position: relative;
+    right: -82%;
+    top: 20px;
+    
+}
+
+.large-screen {
+    position: absolute;
+    top: 25px;
+    left: 840px;
+}
+
+.string2 {
+    position: relative;
+    top: 73px;
+    left: -269px;
+}
+
+.high-capacity {
+    position: absolute;
+    top: 170px;
+    left: 790px;
+}
+
+.string3 {
+    position: relative;
+    top: 62px;
+    left: -225px;
+}
+
+.strong-battery {
+    position: absolute;
+    top: 315px;
+    left: 795px;
+}
+
+.string4 {
+    position: relative;
+    top: 65px;
+    left: -180px;
+}
+
+.thin-body {
+    position: absolute;
+    top: 455px;
+    left: 750px;
+}
+
+.string5 {
+    position: relative;
+    top: 17px;
+    left: -255px;
+}
