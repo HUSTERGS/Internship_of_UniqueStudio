@@ -109,7 +109,7 @@ window.addEventListener("mousewheel", function(event){
     if (document.documentElement.scrollTop === 3 * window.innerHeight) currentpage = 4;
     if (document.documentElement.scrollTop <= 3 * window.innerHeight){
         if (event.wheelDelta < 0) {
-            if (currentpage == 1){
+            if (currentpage === 1){
                 $("html,body").animate({scrollTop: $("#read-feel").offset().top}, 1000);
                 currentpage = 2;
             }
@@ -123,7 +123,7 @@ window.addEventListener("mousewheel", function(event){
             }
         }
         else if (event.wheelDelta > 0) {
-            if (currentpage == 2) {
+            if (currentpage === 2) {
                 $("html,body").animate({scrollTop: $("#main").offset().top}, 1000);
                 currentpage = 1;
             }
