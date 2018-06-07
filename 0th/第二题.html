@@ -26,8 +26,9 @@
             width: 100%;
             margin: auto;
             position: relative;
-            box-shadow: 0 15px 5px rgb(209, 209, 209); 
+            box-shadow: 0 15px 5px rgb(209, 209, 209);
         }
+
         .filter {
             background: white;
             border-radius: 2em;
@@ -41,6 +42,7 @@
             filter: blur(5px);
             clip-path: polygon(0 0, 30% 0, 25% 100%, 0 100%);
         }
+
         input {
             height: 5%;
             width: 20%;
@@ -73,7 +75,7 @@
 </head>
 
 <body>
-    
+
     <div class="information">
         <div class="filter"></div>
         <input type="text" id="search">
@@ -145,7 +147,6 @@
                 director.innerHTML = jsonobj.Director;
                 actors.innerHTML = jsonobj.Actors;
                 genre.innerHTML = jsonobj.Genre;
-                
             }
         }
         searchMovie('good');

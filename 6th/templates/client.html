@@ -1,0 +1,92 @@
+<!DOCtype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        input {
+            width: 300px;
+        }
+
+        p {
+            padding: 10px 5px;
+            margin: 0;
+        }
+
+        .auth {
+            border-top: 1px solid black;
+        }
+
+        .container {
+            border: 2px solid gray;
+            margin: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" class="search-box">
+    <button onclick="search()">搜素</button>
+    <input type="text" class="link-box">
+    <button onclick="showlinkresult()">button</button>
+    <a href="/register" target="_blank">注册</a>
+    <div class="main"></div>
+    <script>
+        /*var mission1 = new XMLHttpRequest();
+        mission1.open('GET', 'http://127.0.0.1:10000');
+        mission1.responseType = 'text';
+        mission1.send();
+        mission1.onload = function () {
+            console.log(mission1.response)
+            alert(mission1.response);
+        }
+        $.post("/js_post/"+ip, data_to_backend, function(data){alert("success "+data)} );
+        function showlinkresult() {
+            var mission1 = open('GET', "http://127.0.0.1:10000");
+            mission1.send(document.querySelector(".link-box").value);
+
+        }
+
+        function search() {
+            var keyword = document.querySelector(".search-box").value;
+            window.open('http://bbs.mycraft.cc/search.php?mod=forum&searchid=1&orderby=lastpost&ascdesc=desc&searchsubmit=yes&kw' + keyword);
+        }*/
+
+        function showlinkresult() {
+            var data = document.querySelector(".link-box").value;
+            //alert(data);
+            $.ajax({
+                url: "/searchlink",
+                type: 'POST',
+                data: data,
+                success: function (data) {
+                    console.log(data)
+                    var num = 0;
+                    var main = document.querySelector(".main");
+                    main.innerHTML = '';
+                    while (data[num.toString()]) {
+                        var auth = document.createElement("p");
+                        auth.setAttribute("class", "auth")
+                        var content = document.createElement("p");
+                        content.setAttribute("class", "content");
+                        var containner = document.createElement("div");
+                        containner.setAttribute("class", "container");
+                        auth.innerHTML = data[num.toString()][0];
+                        var numth = document.createElement("p");
+                        numth.innerHTML = '#' + (num + 1) + ':';
+                        content.innerHTML = data[num.toString()][1];
+                        containner.appendChild(numth);
+                        containner.appendChild(auth);
+                        containner.appendChild(content);
+                        main.appendChild(containner);
+                        num++;
+                    }
+                }
+            })
+
+        }
+    </script>
+</body>
+
+</html>
