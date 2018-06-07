@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, jsonify
 import requests as rq
 from lxml import html
-import pymysql
+from selenium import webdriver
 import mysql.connector
+from time import sleep
 app = Flask(__name__)
 
 
@@ -27,6 +28,30 @@ def data():
             'string(.)'), selector1[num].xpath('string(.)')]
     print(responseData)
     return jsonify(responseData)
+
+
+@app.route('/search', methods=['POST'])
+def search():
+    chromepath = u'D:\chromedriver.exe'
+    wd = webdriver.Chrome(executable_path=chromepath)
+    loginUrl = 'http://bbs.mycraft.cc/member.php?mod=logging&action=login'
+    wd.get(loginUrl)
+    sleep(10)
+    wd.find_element_by_css_selector(
+        "input[name='username'][id^='username']").send_keys('G-_-S')
+    wd.find_element_by_css_selector(
+        "input[name='password'][id^='password3']").send_keys('gs123456')
+    wd.find_element_by_css_selector("button[name='loginsubmit']").submit()
+    req = rq.Session()
+    sleep(5)
+    cookies = wd.get_cookies()
+    for cookie in cookies:
+        req.cookies.set(cookie['name'], cookie['value'])
+    searchTarget = request.get_data().decode()
+    naiveURL1 = 'http://bbs.mycraft.cc/search.php?searchsubmit=yes&mod=forum&formhash=31aee165&srchtype=title&srhfid=&srhlocality=forum%3A%3Aindex&srchtxt='
+    naiveURL2 = '&searchsubmit=true'
+    responseData = rq.post(naiveURL1 + searchTarget + naiveURL2).content
+    return responseData
 
 
 @app.route('/register', methods=['GET'])

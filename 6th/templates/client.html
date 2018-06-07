@@ -33,29 +33,8 @@
     <a href="/register" target="_blank">注册</a>
     <div class="main"></div>
     <script>
-        /*var mission1 = new XMLHttpRequest();
-        mission1.open('GET', 'http://127.0.0.1:10000');
-        mission1.responseType = 'text';
-        mission1.send();
-        mission1.onload = function () {
-            console.log(mission1.response)
-            alert(mission1.response);
-        }
-        $.post("/js_post/"+ip, data_to_backend, function(data){alert("success "+data)} );
-        function showlinkresult() {
-            var mission1 = open('GET', "http://127.0.0.1:10000");
-            mission1.send(document.querySelector(".link-box").value);
-
-        }
-
-        function search() {
-            var keyword = document.querySelector(".search-box").value;
-            window.open('http://bbs.mycraft.cc/search.php?mod=forum&searchid=1&orderby=lastpost&ascdesc=desc&searchsubmit=yes&kw' + keyword);
-        }*/
-
         function showlinkresult() {
             var data = document.querySelector(".link-box").value;
-            //alert(data);
             $.ajax({
                 url: "/searchlink",
                 type: 'POST',
@@ -86,6 +65,20 @@
             })
 
         }
+
+        function search() {
+            var searchTarget = document.querySelector(".search-box").value;
+            $.ajax({
+                url: "/search",
+                type: 'POST',
+                data: searchTarget,
+                success: function (data) {
+                    document.querySelector(".main").innerHTML = data;
+                }
+            })
+        }
+
+        //http://bbs.mycraft.cc/search.php?searchsubmit=yes&mod=forum&formhash=31aee165&srchtype=title&srhfid=&srhlocality=forum%3A%3Aindex&srchtxt=%E9%B8%A1&searchsubmit=true
     </script>
 </body>
 
