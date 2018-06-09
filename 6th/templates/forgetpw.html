@@ -4,7 +4,7 @@
 <head>
     <meta charset="uft-8">
     <style>
-        .password {
+        .email {
             margin-left: 16px;
         }
 
@@ -15,19 +15,18 @@
 </head>
 
 <body>
-    <form method="POST" action='/userlogin'>
+    <form method="POST" action='/findpw'>
         <label class="user">用户名：
             <input type="text" name="user" value="" autocomplete="off" maxlength="20">
         </label>
 
         <br>
-        <label class="password">密码：
-            <input type="password" name="password" value="" autocomplete="off" maxlength="20">
+        <label class="email">邮箱：
+            <input type="email" name="email" value="" autocomplete="off" maxlength="30">
         </label>
-        <a href="/forgetpw" target="_blank">忘记密码</a>
         <br>
         <br>
-        <input type="submit" value="登录">
+        <input type="submit" value="提交">
     </form>
 
 
@@ -36,12 +35,18 @@
         var button = document.querySelector("input[type='submit']")
         button.onclick = function (event) {
             event.preventDefault()
-            if (document.querySelector("input[name='password']").value === "") {
+            if (document.querySelector("input[name='user']").value === "") {
                 alert("用户名不能为空")
                 return
             }
-            if (document.querySelector("input[name='password']").value === "") {
-                alert("密码不能为空")
+            if (document.querySelector("input[name='email']").value === "") {
+                alert("邮箱不能为空")
+                return
+            }
+            email = document.querySelector("input[name='email']").value;
+            var reg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
+            if (!reg.test(email)) {
+                alert("请填入正确的邮箱")
                 return
             }
             document.querySelector("form").submit();

@@ -3,20 +3,88 @@
 
 <head>
     <meta charset="utf-8">
+    <style>
+        .username {
+            margin-left: 64px;
+        }
+
+        .pw1 {
+            margin-left: 80px;
+        }
+
+        pw2 {
+            margin-left: 10px;
+        }
+
+        .email {
+            margin-left: 80px;
+        }
+
+        input[type="submit"] {
+            margin-left: 195px;
+        }
+
+        input[type="email"] :invalid {
+            outline: 1px solid red;
+        }
+
+        input[type="email"] :valid {
+            outline: 2px solid black;
+        }
+    </style>
 </head>
 
 <body>
     <form method="POST" action='/registuser'>
-        <label>用户名：
-            <input type="text" name="user" value="">
+        <label class="username">用户名：
+            <input type="text" name="user" value="" autocomplete="off" maxlength="20">
         </label>
-        <label>密码：
-            <input type="password" name="password" value="">
+        <br>
+        <label class="pw1">密码：
+            <input type="password" name="password1" value="" autocomplete="off" maxlength="20">
         </label>
+        <br>
+        <label class="pw2">请再次输入密码：
+            <input type="password" name="password2" value="" autocomplete="off" maxlength="20">
+        </label>
+        <br>
+        <label class="email">邮箱：
+            <input type="email" name="email" value="" autocomplete="off" maxlength="30">
+        </label>
+        <br>
+        <br>
         <input type="submit" value="注册">
     </form>
     <script>
-
+        var button = document.querySelector("input[type='submit']")
+        button.onclick = function (event) {
+            event.preventDefault()
+            user = document.querySelector("input[name='user']").value;
+            pw1 = document.querySelector("input[name='password1']").value;
+            pw2 = document.querySelector("input[name='password2']").value;
+            email = document.querySelector("input[name='email']").value;
+            if (user.length === 0) {
+                alert("用户名不能为空")
+                return
+            }
+            if (pw1.length === 0) {
+                alert("密码不能为空")
+                return
+            }
+            if (pw1 !== pw2) {
+                alert("两次输入的密码不一致")
+                return
+            }
+            if (email.length === 0) {
+                alert("邮箱不能为空")
+            }
+            var reg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
+            if (!reg.test(email)) {
+                alert("请填入正确的邮箱")
+                return
+            }
+            document.querySelector("form").submit()
+        }
     </script>
 </body>
 
