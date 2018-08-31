@@ -5,11 +5,11 @@ from selenium import webdriver
 import mysql.connector
 from time import sleep
 from selenium.webdriver.common.keys import Keys
-import pickle
+#import pickle
 app = Flask(__name__)
 
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=['GET'])
 def index():
     return render_template("client.html")
 
@@ -55,9 +55,9 @@ def search():
     searchTarget = request.get_data().decode()
     naiveURL1 = 'http://bbs.mycraft.cc/search.php?searchsubmit=yes&mod=forum&formhash=ba678760&srchtype=title&srhfid=&srhlocality=forum%3A%3Aindex&srchtxt='
     naiveURL2 = '&searchsubmit=true'
-    responseTree = html.fromstring(req.get(naiveURL1 + searchTarget + naiveURL2, cookies={'WN1p0_2132_auth': '7dd0qIswz3otrVCf5fnG8NrbUszRJmrkN3f3nrvRzjMbYlvhZ3xp0KvdKHu3gQ2EokF7J%2B6sh6oFUsHP4Nx2xaWlfg', 'WN1p0_2132_saltkey': 'GX2zQCio'}, headers={'Connection': 'keep-alive', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Safari/537.36',
-                                                                                                                                                                                                                                                         'DNT': '1', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding': 'gzip, deflate', 'Accept-Language': 'zh-CN,zh;q=0.9'}).content)
-
+    myrequest = req.get(naiveURL1 + searchTarget + naiveURL2, cookies={'WN1p0_2132_auth': '7dd0qIswz3otrVCf5fnG8NrbUszRJmrkN3f3nrvRzjMbYlvhZ3xp0KvdKHu3gQ2EokF7J%2B6sh6oFUsHP4Nx2xaWlfg', 'WN1p0_2132_saltkey': 'GX2zQCio'}, headers={'Connection': 'keep-alive', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Safari/537.36',
+                                                                                                                                                                                                                                      'DNT': '1', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding': 'gzip, deflate', 'Accept-Language': 'zh-CN,zh;q=0.9'}).content
+    responseTree = html.fromstring(myrequest)
     return etree.tounicode(responseTree.xpath("//div[@class='tl']")[0])
 
 
@@ -140,3 +140,4 @@ def findpw():
 if __name__ == '__main__':
     app.run(debug=True)
 # http://bbs.mycraft.cc/search.php?searchsubmit=yes&mod=forum&formhash=ba678760&srchtype=title&srhfid=&srhlocality=forum%3A%3Aindex&srchtxt=&searchsubmit=true
+#{'WN1p0_2132_auth': '7dd0qIswz3otrVCf5fnG8NrbUszRJmrkN3f3nrvRzjMbYlvhZ3xp0KvdKHu3gQ2EokF7J%2B6sh6oFUsHP4Nx2xaWlfg', 'WN1p0_2132_saltkey': 'GX2zQCio'}
